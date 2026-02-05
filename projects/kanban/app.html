@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Board - Luisan & Teiny</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: #fff;
+    }
+    h1 { text-align: center; margin-bottom: 8px; font-weight: 300; font-size: 1.8rem; }
+    .status { text-align: center; margin-bottom: 20px; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .status.saving { color: #feca57; }
+    .status.saved { color: #4ecdc4; }
+    .status.error { color: #ff6b6b; }
+    .board { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .column {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 14px;
+      width: 280px;
+      min-height: 500px;
+    }
+    .column-header {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+    }
+    .column-header h2 { font-size: 1rem; font-weight: 600; flex: 1; }
+    .column-header .emoji { font-size: 1.2rem; }
+    .column-header .count { 
+      font-size: 0.7rem; 
+      background: rgba(255,255,255,0.1); 
+      padding: 2px 6px; 
+      border-radius: 10px; 
+    }
+    .recurrente-col .column-header { border-color: #ff6b6b; }
+    .puentesat-col .column-header { border-color: #a855f7; }
+    .tributax-col .column-header { border-color: #4ecdc4; }
+    .personal-col .column-header { border-color: #feca57; }
+    .teiny-col .column-header { border-color: #ff6b6b; background: rgba(255,107,107,0.1); }
+    .cards { display: flex; flex-direction: column; gap: 8px; min-height: 100px; }
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 10px;
+      position: relative;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border-left: 3px solid transparent;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .card.priority-high { border-left-color: #ff6b6b; }
+    .card.priority-medium { border-left-color: #feca57; }
+    .card.priority-low { border-left-color: #4ecdc4; }
+    .card-title { font-weight: 500; margin-bottom: 3px; padding-right: 50px; font-size: 0.85rem; }
+    .card-desc { font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.4; }
+    .card-desc a { color: #4ecdc4; }
+    .card-actions {
+      position: absolute; top: 6px; right: 6px;
+      display: flex; gap: 2px; opacity: 0.5;
+    }
+    .card:hover .card-actions { opacity: 1; }
+    .card-actions button {
+      background: rgba(255,255,255,0.15); border: none; color: #fff;
+      width: 20px; height: 20px; border-radius: 4px; cursor: pointer;
+      font-size: 10px; display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .card-actions button:hover { background: rgba(255,255,255,0.3); }
+    .add-btn {
+      width: 100%; padding: 8px; margin-top: 8px;
+      background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: 8px; color: rgba(255,255,255,0.4); cursor: pointer;
+      transition: all 0.15s; font-size: 0.85rem;
+    }
+    .add-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); color: #fff; }
+    
+    /* Modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; z-index: 100; }
+    .modal.active { display: flex; }
+    .modal-box { background: #1e1e2e; padding: 20px; border-radius: 12px; width: 90%; max-width: 400px; }
+    .modal-box h3 { margin-bottom: 16px; font-weight: 500; }
+    .modal-box input, .modal-box textarea, .modal-box select {
+      width: 100%; padding: 10px; margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;
+      background: rgba(255,255,255,0.05); color: #fff; font-family: inherit; font-size: 0.9rem;
+    }
+    .modal-box textarea { min-height: 70px; resize: vertical; }
+    .modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
+    .modal-btns button { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
+    .btn-save { background: #4ecdc4; color: #000; }
+    .btn-cancel { background: rgba(255,255,255,0.1); color: #fff; }
+    .btn-delete { background: #ff6b6b; color: #fff; margin-right: auto; }
+    
+    /* Move modal */
+    .move-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .move-btns button { flex: 1; min-width: 120px; padding: 10px; background: rgba(255,255,255,0.1); border: none; color: #fff; border-radius: 6px; cursor: pointer; }
+    .move-btns button:hover { background: rgba(255,255,255,0.2); }
+    .move-btns button.current { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <h1>🎯 Luisan & Teiny Task Board</h1>
+  <div class="status" id="status">Loading...</div>
+  
+  <div class="board">
+    <div class="column recurrente-col">
+      <div class="column-header">
+        <span class="emoji">🔥</span>
+        <h2>Recurrente</h2>
+        <span class="count" id="recurrente-count">0</span>
+      </div>
+      <div class="cards" id="recurrente-cards"></div>
+      <button class="add-btn" onclick="openModal('recurrente')">+ Add task</button>
+    </div>
+    <div class="column puentesat-col">
+      <div class="column-header">
+        <span class="emoji">💜</span>
+        <h2>PuenteSat</h2>
+        <span class="count" id="puentesat-count">0</span>
+      </div>
+      <div class="cards" id="puentesat-cards"></div>
+      <button class="add-btn" onclick="openModal('puentesat')">+ Add task</button>
+    </div>
+    <div class="column tributax-col">
+      <div class="column-header">
+        <span class="emoji">📊</span>
+        <h2>Tributax</h2>
+        <span class="count" id="tributax-count">0</span>
+      </div>
+      <div class="cards" id="tributax-cards"></div>
+      <button class="add-btn" onclick="openModal('tributax')">+ Add task</button>
+    </div>
+    <div class="column personal-col">
+      <div class="column-header">
+        <span class="emoji">🏠</span>
+        <h2>Personal</h2>
+        <span class="count" id="personal-count">0</span>
+      </div>
+      <div class="cards" id="personal-cards"></div>
+      <button class="add-btn" onclick="openModal('personal')">+ Add task</button>
+    </div>
+    <div class="column teiny-col">
+      <div class="column-header">
+        <span class="emoji">🧠</span>
+        <h2>Teiny</h2>
+        <span class="count" id="teiny-count">0</span>
+      </div>
+      <div class="cards" id="teiny-cards"></div>
+      <button class="add-btn" onclick="openModal('teiny')">+ Add task</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h3 id="modal-title">Add Task</h3>
+      <input type="text" id="inp-title" placeholder="Task title">
+      <textarea id="inp-desc" placeholder="Description (optional)"></textarea>
+      <select id="inp-priority">
+        <option value="high">🔴 High</option>
+        <option value="medium" selected>🟡 Medium</option>
+        <option value="low">🟢 Low</option>
+      </select>
+      <div class="modal-btns">
+        <button class="btn-delete" id="btn-del" onclick="deleteTask()">Delete</button>
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-save" onclick="saveTask()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="move-modal">
+    <div class="modal-box">
+      <h3>Move to...</h3>
+      <div class="move-btns">
+        <button onclick="moveTo('recurrente')">🔥 Recurrente</button>
+        <button onclick="moveTo('puentesat')">💜 PuenteSat</button>
+        <button onclick="moveTo('tributax')">📊 Tributax</button>
+        <button onclick="moveTo('personal')">🏠 Personal</button>
+        <button onclick="moveTo('teiny')">🧠 Teiny</button>
+      </div>
+      <div class="modal-btns">
+        <button class="btn-cancel" onclick="closeMoveModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const COLUMNS = ['recurrente', 'puentesat', 'tributax', 'personal', 'teiny'];
+let data = {};
+COLUMNS.forEach(c => data[c] = []);
+
+let editCol = null, editIdx = null;
+let moveCol = null, moveIdx = null;
+
+// === API ===
+async function load() {
+  try {
+    const res = await fetch('/data');
+    const loaded = await res.json();
+    COLUMNS.forEach(c => data[c] = loaded[c] || []);
+    render();
+    status('Loaded');
+  } catch (e) {
+    status('Failed to load', 'error');
+  }
+}
+
+async function save() {
+  status('Saving...', 'saving');
+  try {
+    await fetch('/data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    status('Saved', 'saved');
+  } catch (e) {
+    status('Save failed', 'error');
+  }
+}
+
+function status(msg, cls = '') {
+  const el = document.getElementById('status');
+  el.textContent = msg + ' • ' + new Date().toLocaleTimeString();
+  el.className = 'status ' + cls;
+}
+
+// === Render ===
+function render() {
+  COLUMNS.forEach(col => {
+    const cards = document.getElementById(`${col}-cards`);
+    document.getElementById(`${col}-count`).textContent = data[col].length;
+    cards.innerHTML = data[col].map((t, i) => `
+      <div class="card priority-${t.priority}" onclick="openModal('${col}', ${i})">
+        <div class="card-actions">
+          <button onclick="event.stopPropagation(); move('${col}',${i},-1)" title="Up">↑</button>
+          <button onclick="event.stopPropagation(); move('${col}',${i},1)" title="Down">↓</button>
+          <button onclick="event.stopPropagation(); openMoveModal('${col}',${i})" title="Move">⇄</button>
+        </div>
+        <div class="card-title">${esc(t.title)}</div>
+        ${t.desc ? `<div class="card-desc">${t.desc}</div>` : ''}
+      </div>
+    `).join('');
+  });
+}
+
+function esc(s) { return s.replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+// === Actions ===
+function move(col, idx, dir) {
+  const arr = data[col], newIdx = idx + dir;
+  if (newIdx >= 0 && newIdx < arr.length) {
+    [arr[idx], arr[newIdx]] = [arr[newIdx], arr[idx]];
+    render();
+    save();
+  }
+}
+
+function openMoveModal(col, idx) {
+  moveCol = col; moveIdx = idx;
+  document.getElementById('move-modal').classList.add('active');
+}
+
+function closeMoveModal() {
+  document.getElementById('move-modal').classList.remove('active');
+  moveCol = moveIdx = null;
+}
+
+function moveTo(targetCol) {
+  if (moveCol && targetCol !== moveCol) {
+    data[targetCol].unshift(data[moveCol].splice(moveIdx, 1)[0]);
+    render();
+    save();
+  }
+  closeMoveModal();
+}
+
+// === Modal ===
+function openModal(col, idx = null) {
+  editCol = col; editIdx = idx;
+  document.getElementById('modal-title').textContent = idx !== null ? 'Edit Task' : 'Add Task';
+  document.getElementById('btn-del').style.display = idx !== null ? 'block' : 'none';
+  
+  if (idx !== null) {
+    const t = data[col][idx];
+    document.getElementById('inp-title').value = t.title;
+    document.getElementById('inp-desc').value = t.desc || '';
+    document.getElementById('inp-priority').value = t.priority;
+  } else {
+    document.getElementById('inp-title').value = '';
+    document.getElementById('inp-desc').value = '';
+    document.getElementById('inp-priority').value = 'medium';
+  }
+  
+  document.getElementById('modal').classList.add('active');
+  document.getElementById('inp-title').focus();
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  editCol = editIdx = null;
+}
+
+function saveTask() {
+  const title = document.getElementById('inp-title').value.trim();
+  if (!title) return;
+  
+  const task = {
+    title,
+    desc: document.getElementById('inp-desc').value.trim(),
+    priority: document.getElementById('inp-priority').value
+  };
+  
+  if (editIdx !== null) {
+    data[editCol][editIdx] = task;
+  } else {
+    data[editCol].unshift(task);
+  }
+  
+  render();
+  save();
+  closeModal();
+}
+
+function deleteTask() {
+  if (editIdx !== null && confirm('Delete this task?')) {
+    data[editCol].splice(editIdx, 1);
+    render();
+    save();
+    closeModal();
+  }
+}
+
+// === Init ===
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeMoveModal(); }
+  if (e.key === 'Enter' && e.ctrlKey) saveTask();
+});
+
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+{
+  "recurrente": [
+    {
+      "title": "Fix verification bug (double charges)",
+      "desc": "Payment shows stuck but gets processed → clients charge twice",
+      "priority": "high"
+    },
+    {
+      "title": "InFile facturación - finish with Max",
+      "desc": "Review improvements",
+      "priority": "high"
+    },
+    {
+      "title": "Reconcile Neonet + chargeback metrics",
+      "desc": "Calculate: (1) IVA pending refund from Neonet, (2) % of negative balances recovered, (3) double-debited amount on refunded transactions with chargebacks",
+      "priority": "medium"
+    },
+    {
+      "title": "Find unnotified chargebacks to fight",
+      "desc": "Identify chargebacks we were not notified of but should contest",
+      "priority": "medium"
+    },
+    {
+      "title": "Sex shop merchant - restrict card payments?",
+      "desc": "May need to restrict to avoid fines. <a href='https://app.recurrente.com/a/ac_rkizvyy3' target='_blank'>View merchant</a>",
+      "priority": "medium"
+    },
+    {
+      "title": "Reject Q67,000 swaps + verify Nexa Bank deduction",
+      "desc": "Reject swaps totaling Q67,000 and check with Nexa Bank if funds were deducted",
+      "priority": "low"
+    }
+  ],
+  "puentesat": [
+    {
+      "title": "Hook up sales invoice upload",
+      "desc": "Main feature expansion",
+      "priority": "high"
+    },
+    {
+      "title": "Review Lui's IVA video",
+      "desc": "Research/learning about IVA handling",
+      "priority": "medium"
+    },
+    {
+      "title": "Figure out special taxes (gas, tourism)",
+      "desc": "Edge cases for parser",
+      "priority": "medium"
+    }
+  ],
+  "tributax": [
+    {
+      "title": "Standardize pricing: 25/75/200 Q",
+      "desc": "Simplify pricing tiers for all clients",
+      "priority": "high"
+    }
+  ],
+  "personal": [
+    {
+      "title": "Get Guatemalan passport",
+      "desc": "",
+      "priority": "high"
+    },
+    {
+      "title": "Get Spanish passport",
+      "desc": "",
+      "priority": "high"
+    },
+    {
+      "title": "Get Simon's Spanish passport",
+      "desc": "",
+      "priority": "high"
+    },
+    {
+      "title": "Get Simon's SSN",
+      "desc": "",
+      "priority": "high"
+    },
+    {
+      "title": "Buy term life insurance",
+      "desc": "",
+      "priority": "high"
+    },
+    {
+      "title": "Fix RO water filter leak",
+      "desc": "Need to find someone to repair",
+      "priority": "medium"
+    },
+    {
+      "title": "Hang out with Juanpi",
+      "desc": "See his new apartment",
+      "priority": "medium"
+    },
+    {
+      "title": "Dedicate wall staring time",
+      "desc": "Maybe while putting Simon down?",
+      "priority": "medium"
+    },
+    {
+      "title": "Buy office chairs",
+      "desc": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Buy queen mattress",
+      "desc": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Ask Valeria about Rocky",
+      "desc": "She offered to help with adoption",
+      "priority": "medium"
+    },
+    {
+      "title": "Get remote controls for lights",
+      "desc": "Smart plugs/switches",
+      "priority": "low"
+    },
+    {
+      "title": "Buy white noise machine",
+      "desc": "",
+      "priority": "low"
+    },
+    {
+      "title": "Clean up drawer / throw stuff away",
+      "desc": "Declutter",
+      "priority": "low"
+    },
+    {
+      "title": "Get velcro for curtains",
+      "desc": "Keep them shut",
+      "priority": "low"
+    }
+  ],
+  "teiny": [
+    {
+      "title": "Old PRs - Sandi Metz review",
+      "desc": "Backlog of PRs that need to go through reviewer",
+      "priority": "medium"
+    },
+    {
+      "title": "Chargeback states PR",
+      "desc": "Update won/lost states + save to database",
+      "priority": "medium"
+    },
+    {
+      "title": "Auto-void invoices in dev",
+      "desc": "Auto-anular facturas when testing",
+      "priority": "medium"
+    },
+    {
+      "title": "Connect Basecamp via MCP",
+      "desc": "Set up MCP integration to query Basecamp discussions",
+      "priority": "high"
+    },
+    {
+      "title": "Check Basecamp: sex shop decision",
+      "desc": "Once connected, look up what was decided",
+      "priority": "high"
+    },
+    {
+      "title": "Research: Stripe/Adyen/Square chargebacks",
+      "desc": "How do they handle chargebacks?",
+      "priority": "medium"
+    },
+    {
+      "title": "Research: Stripe/Adyen/Square sales incentives",
+      "desc": "How do they structure sales incentives?",
+      "priority": "medium"
+    }
+  ]
+}
