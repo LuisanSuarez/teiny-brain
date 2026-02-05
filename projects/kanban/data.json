@@ -1,11 +1,6 @@
 {
   "teiny": [
     {
-      "title": "Check Basecamp: sex shop decision",
-      "desc": "Once connected, look up what was decided",
-      "priority": "medium"
-    },
-    {
       "title": "Research: Stripe/Adyen/Square sales incentives",
       "desc": "How do they structure sales incentives?",
       "priority": "high"
@@ -188,6 +183,16 @@
       "title": "Get velcro for curtains",
       "desc": "Keep them shut",
       "priority": "low"
+    }
+  ],
+  "done": [
+    {
+      "title": "Check Basecamp: sex shop decision",
+      "desc": "Once connected, look up what was decided",
+      "priority": "medium",
+      "completedAt": "2026-02-05T19:56:09.082Z",
+      "fromColumn": "teiny",
+      "notes": "Decision reversed: MCCs 5945/5947 are safe for adult retail. Comment posted on Basecamp."
     }
   ]
 }
