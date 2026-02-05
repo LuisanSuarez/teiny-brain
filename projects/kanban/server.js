@@ -8,7 +8,7 @@ const HTML_FILE = path.join(__dirname, 'app.html');
 
 // Initialize data file if missing
 if (!fs.existsSync(DATA_FILE)) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify({ luisan: [], teiny: [] }, null, 2));
+  fs.writeFileSync(DATA_FILE, JSON.stringify({ teiny: [], recurrente: [], puentesat: [], tributax: [], personal: [], done: [] }, null, 2));
 }
 
 const server = http.createServer((req, res) => {

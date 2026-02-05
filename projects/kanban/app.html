@@ -65,6 +65,10 @@
     .card-title { font-weight: 500; margin-bottom: 3px; padding-right: 50px; font-size: 0.85rem; }
     .card-desc { font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.4; }
     .card-desc a { color: #4ecdc4; }
+    .card-due { font-size: 0.7rem; margin-top: 4px; padding: 2px 6px; border-radius: 4px; display: inline-block; }
+    .card-due.overdue { background: rgba(255,107,107,0.3); color: #ff6b6b; }
+    .card-due.today { background: rgba(254,202,87,0.3); color: #feca57; }
+    .card-due.upcoming { background: rgba(78,205,196,0.2); color: rgba(255,255,255,0.6); }
     .card-actions {
       position: absolute; top: 6px; right: 6px;
       display: flex; gap: 2px; opacity: 0.5;
@@ -172,8 +176,11 @@
         <option value="medium" selected>🟡 Medium</option>
         <option value="low">🟢 Low</option>
       </select>
+      <label style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 4px; display: block;">Due date (optional)</label>
+      <input type="datetime-local" id="inp-due" style="color-scheme: dark;">
       <div class="modal-btns">
         <button class="btn-delete" id="btn-del" onclick="deleteTask()">Delete</button>
+        <button class="btn-done" id="btn-done" onclick="markDone()" style="background: #4ecdc4; color: #000; display: none;">✓ Done</button>
         <button class="btn-cancel" onclick="closeModal()">Cancel</button>
         <button class="btn-save" onclick="saveTask()">Save</button>
       </div>
@@ -253,9 +260,36 @@ function render() {
         </div>
         <div class="card-title">${esc(t.title)}</div>
         ${t.desc ? `<div class="card-desc">${t.desc}</div>` : ''}
+        ${t.dueDate ? `<div class="card-due ${getDueClass(t.dueDate)}">${formatDue(t.dueDate)}</div>` : ''}
       </div>
     `).join('');
   });
+}
+
+function getDueClass(dueDate) {
+  const now = new Date();
+  const due = new Date(dueDate);
+  const diffMs = due - now;
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  if (diffMs < 0) return 'overdue';
+  if (diffDays < 1) return 'today';
+  return 'upcoming';
+}
+
+function formatDue(dueDate) {
+  const due = new Date(dueDate);
+  const now = new Date();
+  const diffMs = due - now;
+  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+  
+  if (diffMs < 0) {
+    const overdueDays = Math.abs(diffDays);
+    return `⚠️ ${overdueDays}d overdue`;
+  }
+  if (diffDays === 0) return `📅 Today ${due.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+  if (diffDays === 1) return `📅 Tomorrow`;
+  if (diffDays <= 7) return `📅 ${diffDays}d`;
+  return `📅 ${due.toLocaleDateString([], {month: 'short', day: 'numeric'})}`;
 }
 
 // === Selection ===
@@ -347,16 +381,19 @@ function openModal(col, idx = null) {
   editCol = col; editIdx = idx;
   document.getElementById('modal-title').textContent = idx !== null ? 'Edit Task' : 'Add Task';
   document.getElementById('btn-del').style.display = idx !== null ? 'block' : 'none';
+  document.getElementById('btn-done').style.display = idx !== null ? 'inline-block' : 'none';
   
   if (idx !== null) {
     const t = data[col][idx];
     document.getElementById('inp-title').value = t.title;
     document.getElementById('inp-desc').value = t.desc || '';
     document.getElementById('inp-priority').value = t.priority;
+    document.getElementById('inp-due').value = t.dueDate || '';
   } else {
     document.getElementById('inp-title').value = '';
     document.getElementById('inp-desc').value = '';
     document.getElementById('inp-priority').value = 'medium';
+    document.getElementById('inp-due').value = '';
   }
   
   document.getElementById('modal').classList.add('active');
@@ -378,6 +415,9 @@ function saveTask() {
     priority: document.getElementById('inp-priority').value
   };
   
+  const dueDate = document.getElementById('inp-due').value;
+  if (dueDate) task.dueDate = dueDate;
+  
   if (editIdx !== null) {
     data[editCol][editIdx] = task;
   } else {
@@ -387,6 +427,19 @@ function saveTask() {
   render();
   save();
   closeModal();
+}
+
+function markDone() {
+  if (editIdx === null) return;
+  const task = data[editCol].splice(editIdx, 1)[0];
+  task.completedAt = new Date().toISOString();
+  task.fromColumn = editCol;
+  if (!data.done) data.done = [];
+  data.done.unshift(task);
+  render();
+  save();
+  closeModal();
+  status('Task completed! 🎉', 'saved');
 }
 
 function deleteTask() {
