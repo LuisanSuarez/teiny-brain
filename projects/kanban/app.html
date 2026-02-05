@@ -18,6 +18,8 @@
     .status.saving { color: #feca57; }
     .status.saved { color: #4ecdc4; }
     .status.error { color: #ff6b6b; }
+    .help { text-align: center; margin-bottom: 16px; font-size: 0.7rem; color: rgba(255,255,255,0.3); display: none; }
+    .help.active { display: block; }
     .board { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .column {
       background: rgba(255,255,255,0.05);
@@ -54,6 +56,7 @@
       border-left: 3px solid transparent;
     }
     .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .card.selected { outline: 2px solid #4ecdc4; outline-offset: 2px; background: rgba(78,205,196,0.15); }
     .card.priority-high { border-left-color: #ff6b6b; }
     .card.priority-medium { border-left-color: #feca57; }
     .card.priority-low { border-left-color: #4ecdc4; }
@@ -107,6 +110,7 @@
 <body>
   <h1>🎯 Luisan & Teiny Task Board</h1>
   <div class="status" id="status">Loading...</div>
+  <div class="help" id="help">Click to select • ↑↓ reorder • ←→ move columns • T = Teiny • 1-5 = jump to column • Enter = edit • Esc = deselect</div>
   
   <div class="board">
     <div class="column recurrente-col">
@@ -197,6 +201,7 @@ COLUMNS.forEach(c => data[c] = []);
 
 let editCol = null, editIdx = null;
 let moveCol = null, moveIdx = null;
+let selCol = null, selIdx = null;
 
 // === API ===
 async function load() {
@@ -237,7 +242,8 @@ function render() {
     const cards = document.getElementById(`${col}-cards`);
     document.getElementById(`${col}-count`).textContent = data[col].length;
     cards.innerHTML = data[col].map((t, i) => `
-      <div class="card priority-${t.priority}" onclick="openModal('${col}', ${i})">
+      <div class="card priority-${t.priority}${selCol === col && selIdx === i ? ' selected' : ''}" 
+           onclick="selectCard('${col}', ${i})" ondblclick="openModal('${col}', ${i})">
         <div class="card-actions">
           <button onclick="event.stopPropagation(); move('${col}',${i},-1)" title="Up">↑</button>
           <button onclick="event.stopPropagation(); move('${col}',${i},1)" title="Down">↓</button>
@@ -248,6 +254,59 @@ function render() {
       </div>
     `).join('');
   });
+}
+
+// === Selection ===
+function selectCard(col, idx) {
+  if (selCol === col && selIdx === idx) {
+    // Already selected - deselect
+    selCol = selIdx = null;
+  } else {
+    selCol = col;
+    selIdx = idx;
+  }
+  updateHelp();
+  render();
+}
+
+function updateHelp() {
+  document.getElementById('help').classList.toggle('active', selCol !== null);
+}
+
+function clearSelection() {
+  selCol = selIdx = null;
+  updateHelp();
+  render();
+}
+
+function moveSelected(dir) {
+  if (selCol === null) return;
+  const arr = data[selCol], newIdx = selIdx + dir;
+  if (newIdx >= 0 && newIdx < arr.length) {
+    [arr[selIdx], arr[newIdx]] = [arr[newIdx], arr[selIdx]];
+    selIdx = newIdx;
+    render();
+    save();
+  }
+}
+
+function moveSelectedToColumn(targetCol) {
+  if (selCol === null || selCol === targetCol) return;
+  const task = data[selCol].splice(selIdx, 1)[0];
+  data[targetCol].unshift(task);
+  selCol = targetCol;
+  selIdx = 0;
+  render();
+  save();
+}
+
+function moveSelectedLeftRight(dir) {
+  if (selCol === null) return;
+  const currentColIdx = COLUMNS.indexOf(selCol);
+  const newColIdx = currentColIdx + dir;
+  if (newColIdx >= 0 && newColIdx < COLUMNS.length) {
+    moveSelectedToColumn(COLUMNS[newColIdx]);
+  }
 }
 
 function esc(s) { return s.replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -339,8 +398,46 @@ function deleteTask() {
 
 // === Init ===
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeModal(); closeMoveModal(); }
-  if (e.key === 'Enter' && e.ctrlKey) saveTask();
+  // Modal shortcuts
+  if (e.key === 'Escape') { 
+    if (document.getElementById('modal').classList.contains('active')) {
+      closeModal();
+    } else if (document.getElementById('move-modal').classList.contains('active')) {
+      closeMoveModal();
+    } else if (selCol !== null) {
+      clearSelection();
+    }
+    return;
+  }
+  if (e.key === 'Enter' && e.ctrlKey) { saveTask(); return; }
+  
+  // Don't handle keys if modal is open or typing in input
+  if (document.getElementById('modal').classList.contains('active')) return;
+  if (document.getElementById('move-modal').classList.contains('active')) return;
+  if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+  
+  // Keyboard navigation for selected card
+  if (selCol !== null) {
+    if (e.key === 'ArrowUp') { e.preventDefault(); moveSelected(-1); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); moveSelected(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); moveSelectedLeftRight(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); moveSelectedLeftRight(1); }
+    if (e.key === 't' || e.key === 'T') { e.preventDefault(); moveSelectedToColumn('teiny'); }
+    if (e.key === 'Enter') { e.preventDefault(); openModal(selCol, selIdx); }
+    if (e.key === 'Delete' || e.key === 'Backspace') { 
+      e.preventDefault();
+      if (confirm('Delete this task?')) {
+        data[selCol].splice(selIdx, 1);
+        clearSelection();
+        save();
+      }
+    }
+    // Quick column jumps: 1=Recurrente, 2=PuenteSat, 3=Tributax, 4=Personal, 5=Teiny
+    if (e.key >= '1' && e.key <= '5') {
+      e.preventDefault();
+      moveSelectedToColumn(COLUMNS[parseInt(e.key) - 1]);
+    }
+  }
 });
 
 load();
