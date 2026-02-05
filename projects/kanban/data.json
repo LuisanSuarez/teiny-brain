@@ -1,6 +1,11 @@
 {
   "teiny": [
     {
+      "title": "Check Basecamp: sex shop decision",
+      "desc": "Once connected, look up what was decided",
+      "priority": "medium"
+    },
+    {
       "title": "Research: Stripe/Adyen/Square sales incentives",
       "desc": "How do they structure sales incentives?",
       "priority": "high"
@@ -23,11 +28,6 @@
     {
       "title": "Chargeback states PR",
       "desc": "Update won/lost states + save to database",
-      "priority": "medium"
-    },
-    {
-      "title": "Check Basecamp: sex shop decision",
-      "desc": "Once connected, look up what was decided",
       "priority": "medium"
     }
   ],
@@ -188,15 +188,6 @@
       "title": "Get velcro for curtains",
       "desc": "Keep them shut",
       "priority": "low"
-    }
-  ],
-  "done": [
-    {
-      "title": "Connect Basecamp via MCP",
-      "desc": "Set up MCP integration to query Basecamp discussions",
-      "priority": "high",
-      "completedAt": "2026-02-05T19:13:11.172Z",
-      "fromColumn": "teiny"
     }
   ]
 }

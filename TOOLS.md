@@ -2,6 +2,16 @@
 
 Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
 
+## ⚠️ Rules
+
+### Ask Before Installing
+Always ask Luisan before installing anything — Homebrew, npm, pip, curl, etc. Security first.
+
+### Browser
+Use **Brave**, not Chrome. Brave is the default browser with all cookies/sessions.
+
+---
+
 ## What Goes Here
 
 Things like:
