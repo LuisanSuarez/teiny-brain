@@ -10,6 +10,14 @@ Always ask Luisan before installing anything — Homebrew, npm, pip, curl, etc. 
 ### Browser
 Use **Brave**, not Chrome. Brave is the default browser with all cookies/sessions.
 
+### Basecamp Posting
+When posting to Basecamp:
+- **Default:** Save as draft OR publish with only Luisan notified
+- **Never** auto-notify the whole team
+- Luisan will add people to notify later
+- Use `status: "draft"` or remove all subscribers except Luisan's ID
+- **Luisan's Basecamp ID:** 47257318
+
 ---
 
 ## What Goes Here
