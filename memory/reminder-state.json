@@ -1,1 +1,5 @@
-{}
+{
+  "tributax:Get Recurrente payment link": {
+    "1day": true
+  }
+}

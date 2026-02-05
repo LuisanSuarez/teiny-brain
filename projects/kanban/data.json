@@ -1,5 +1,52 @@
 {
+  "teiny": [
+    {
+      "title": "Research: Stripe/Adyen/Square sales incentives",
+      "desc": "How do they structure sales incentives?",
+      "priority": "high"
+    },
+    {
+      "title": "Old PRs - Sandi Metz review",
+      "desc": "Backlog of PRs that need to go through reviewer",
+      "priority": "medium"
+    },
+    {
+      "title": "Auto-void invoices in dev",
+      "desc": "Auto-anular facturas when testing",
+      "priority": "medium"
+    },
+    {
+      "title": "Research: Stripe/Adyen/Square chargebacks",
+      "desc": "How do they handle chargebacks?",
+      "priority": "medium"
+    },
+    {
+      "title": "Chargeback states PR",
+      "desc": "Update won/lost states + save to database",
+      "priority": "medium"
+    },
+    {
+      "title": "Check Basecamp: sex shop decision",
+      "desc": "Once connected, look up what was decided",
+      "priority": "medium"
+    }
+  ],
   "recurrente": [
+    {
+      "title": "Handle failed crypto swaps",
+      "desc": "Test, make sure it works, send recording to David and ship it",
+      "priority": "high"
+    },
+    {
+      "title": "Retroactive Inviter + Invitee",
+      "desc": "Finish writing the PR, testing and sending\n1. we need to hide the \"add inviter\" from the UI users see and move it to admin only\n2. i think there's a logic bug when checking if we can re-add the reward\n3. triple-check that the way we add it will be re-counted on Profit.rb",
+      "priority": "high"
+    },
+    {
+      "title": "InFile facturación - finish with Max",
+      "desc": "Review improvements",
+      "priority": "high"
+    },
     {
       "title": "AI Withdrawal Reviewer rules",
       "desc": "add a rule to the ai withdrawal reviewer that checks if there are payments back and forth (a paid b, b paid a)",
@@ -13,11 +60,6 @@
     {
       "title": "Fix verification bug (double charges)",
       "desc": "Payment shows stuck but gets processed → clients charge twice",
-      "priority": "high"
-    },
-    {
-      "title": "InFile facturación - finish with Max",
-      "desc": "Review improvements",
       "priority": "high"
     },
     {
@@ -38,14 +80,14 @@
   ],
   "puentesat": [
     {
-      "title": "Hook up sales invoice upload",
-      "desc": "Main feature expansion",
-      "priority": "high"
-    },
-    {
       "title": "Review Lui's IVA video",
       "desc": "Research/learning about IVA handling",
       "priority": "medium"
+    },
+    {
+      "title": "Hook up sales invoice upload",
+      "desc": "Main feature expansion",
+      "priority": "high"
     },
     {
       "title": "Figure out special taxes (gas, tourism)",
@@ -148,42 +190,13 @@
       "priority": "low"
     }
   ],
-  "teiny": [
-    {
-      "title": "Check Basecamp: sex shop decision",
-      "desc": "Once connected, look up what was decided",
-      "priority": "medium"
-    },
-    {
-      "title": "Old PRs - Sandi Metz review",
-      "desc": "Backlog of PRs that need to go through reviewer",
-      "priority": "medium"
-    },
-    {
-      "title": "Chargeback states PR",
-      "desc": "Update won/lost states + save to database",
-      "priority": "medium"
-    },
-    {
-      "title": "Auto-void invoices in dev",
-      "desc": "Auto-anular facturas when testing",
-      "priority": "medium"
-    },
+  "done": [
     {
       "title": "Connect Basecamp via MCP",
       "desc": "Set up MCP integration to query Basecamp discussions",
-      "priority": "high"
-    },
-    {
-      "title": "Research: Stripe/Adyen/Square chargebacks",
-      "desc": "How do they handle chargebacks?",
-      "priority": "medium"
-    },
-    {
-      "title": "Research: Stripe/Adyen/Square sales incentives",
-      "desc": "How do they structure sales incentives?",
-      "priority": "medium"
+      "priority": "high",
+      "completedAt": "2026-02-05T19:13:11.172Z",
+      "fromColumn": "teiny"
     }
-  ],
-  "done": []
+  ]
 }
