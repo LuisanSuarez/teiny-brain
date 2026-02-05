@@ -20,12 +20,13 @@
     .status.error { color: #ff6b6b; }
     .help { text-align: center; margin-bottom: 16px; font-size: 0.7rem; color: rgba(255,255,255,0.3); display: none; }
     .help.active { display: block; }
-    .board { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .board { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 10px; flex-wrap: nowrap; }
     .column {
       background: rgba(255,255,255,0.05);
       border-radius: 12px;
       padding: 14px;
-      width: 280px;
+      min-width: 280px;
+      flex-shrink: 0;
       min-height: 500px;
     }
     .column-header {
@@ -113,6 +114,15 @@
   <div class="help" id="help">Click to select • ↑↓ reorder • ←→ move columns • T = Teiny • 1-5 = jump to column • Enter = edit • Esc = deselect</div>
   
   <div class="board">
+    <div class="column teiny-col">
+      <div class="column-header">
+        <span class="emoji">🧠</span>
+        <h2>Teiny</h2>
+        <span class="count" id="teiny-count">0</span>
+      </div>
+      <div class="cards" id="teiny-cards"></div>
+      <button class="add-btn" onclick="openModal('teiny')">+ Add task</button>
+    </div>
     <div class="column recurrente-col">
       <div class="column-header">
         <span class="emoji">🔥</span>
@@ -149,15 +159,6 @@
       <div class="cards" id="personal-cards"></div>
       <button class="add-btn" onclick="openModal('personal')">+ Add task</button>
     </div>
-    <div class="column teiny-col">
-      <div class="column-header">
-        <span class="emoji">🧠</span>
-        <h2>Teiny</h2>
-        <span class="count" id="teiny-count">0</span>
-      </div>
-      <div class="cards" id="teiny-cards"></div>
-      <button class="add-btn" onclick="openModal('teiny')">+ Add task</button>
-    </div>
   </div>
 
   <div class="modal" id="modal">
@@ -182,11 +183,11 @@
     <div class="modal-box">
       <h3>Move to...</h3>
       <div class="move-btns">
+        <button onclick="moveTo('teiny')">🧠 Teiny</button>
         <button onclick="moveTo('recurrente')">🔥 Recurrente</button>
         <button onclick="moveTo('puentesat')">💜 PuenteSat</button>
         <button onclick="moveTo('tributax')">📊 Tributax</button>
         <button onclick="moveTo('personal')">🏠 Personal</button>
-        <button onclick="moveTo('teiny')">🧠 Teiny</button>
       </div>
       <div class="modal-btns">
         <button class="btn-cancel" onclick="closeMoveModal()">Cancel</button>
@@ -195,7 +196,7 @@
   </div>
 
 <script>
-const COLUMNS = ['recurrente', 'puentesat', 'tributax', 'personal', 'teiny'];
+const COLUMNS = ['teiny', 'recurrente', 'puentesat', 'tributax', 'personal'];
 let data = {};
 COLUMNS.forEach(c => data[c] = []);
 

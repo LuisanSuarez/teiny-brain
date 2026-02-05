@@ -1,6 +1,16 @@
 {
   "recurrente": [
     {
+      "title": "AI Withdrawal Reviewer rules",
+      "desc": "add a rule to the ai withdrawal reviewer that checks if there are payments back and forth (a paid b, b paid a)",
+      "priority": "medium"
+    },
+    {
+      "title": "Reconcile Neonet + chargeback metrics",
+      "desc": "Calculate: (1) IVA pending refund from Neonet, (2) % of negative balances recovered, (3) double-debited amount on refunded transactions with chargebacks\n(4) store BI reports in the database and allow us to match to what is in the archivos de liquidacion",
+      "priority": "medium"
+    },
+    {
       "title": "Fix verification bug (double charges)",
       "desc": "Payment shows stuck but gets processed → clients charge twice",
       "priority": "high"
@@ -9,11 +19,6 @@
       "title": "InFile facturación - finish with Max",
       "desc": "Review improvements",
       "priority": "high"
-    },
-    {
-      "title": "Reconcile Neonet + chargeback metrics",
-      "desc": "Calculate: (1) IVA pending refund from Neonet, (2) % of negative balances recovered, (3) double-debited amount on refunded transactions with chargebacks",
-      "priority": "medium"
     },
     {
       "title": "Find unnotified chargebacks to fight",
@@ -49,6 +54,16 @@
     }
   ],
   "tributax": [
+    {
+      "title": "Get Recurrente payment link",
+      "desc": "Need by Friday Feb 6",
+      "priority": "high"
+    },
+    {
+      "title": "Fix legacy plan on users column",
+      "desc": "",
+      "priority": "high"
+    },
     {
       "title": "Standardize pricing: 25/75/200 Q",
       "desc": "Simplify pricing tiers for all clients",
@@ -134,6 +149,11 @@
   ],
   "teiny": [
     {
+      "title": "Check Basecamp: sex shop decision",
+      "desc": "Once connected, look up what was decided",
+      "priority": "medium"
+    },
+    {
       "title": "Old PRs - Sandi Metz review",
       "desc": "Backlog of PRs that need to go through reviewer",
       "priority": "medium"
@@ -151,11 +171,6 @@
     {
       "title": "Connect Basecamp via MCP",
       "desc": "Set up MCP integration to query Basecamp discussions",
-      "priority": "high"
-    },
-    {
-      "title": "Check Basecamp: sex shop decision",
-      "desc": "Once connected, look up what was decided",
       "priority": "high"
     },
     {
