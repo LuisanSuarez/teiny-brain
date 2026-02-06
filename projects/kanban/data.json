@@ -28,13 +28,8 @@
   ],
   "recurrente": [
     {
-      "title": "Handle failed crypto swaps",
-      "desc": "Test, make sure it works, send recording to David and ship it",
-      "priority": "high"
-    },
-    {
       "title": "Retroactive Inviter + Invitee",
-      "desc": "Finish writing the PR, testing and sending\n1. we need to hide the \"add inviter\" from the UI users see and move it to admin only\n2. i think there's a logic bug when checking if we can re-add the reward\n3. triple-check that the way we add it will be re-counted on Profit.rb",
+      "desc": "Finish writing the PR, testing and sending\n1. we need to hide the \"add inviter\" from the UI users see and move it to admin only\n2. i think there's a logic bug when checking if we can re-add the reward\n3. triple-check that the way we add it will be re-counted on Profit.rb\n\n**Status:** Almost finished PR (Feb 5)",
       "priority": "high"
     },
     {
@@ -45,11 +40,6 @@
     {
       "title": "AI Withdrawal Reviewer rules",
       "desc": "add a rule to the ai withdrawal reviewer that checks if there are payments back and forth (a paid b, b paid a)",
-      "priority": "medium"
-    },
-    {
-      "title": "Reconcile Neonet + chargeback metrics",
-      "desc": "Calculate: (1) IVA pending refund from Neonet, (2) % of negative balances recovered, (3) double-debited amount on refunded transactions with chargebacks\n(4) store BI reports in the database and allow us to match to what is in the archivos de liquidacion",
       "priority": "medium"
     },
     {
@@ -71,6 +61,11 @@
       "title": "Reject Q67,000 swaps + verify Nexa Bank deduction",
       "desc": "Reject swaps totaling Q67,000 and check with Nexa Bank if funds were deducted",
       "priority": "low"
+    },
+    {
+      "title": "Internal audit - bank statements",
+      "desc": "Getting estados de cuenta for internal audit",
+      "priority": "medium"
     }
   ],
   "puentesat": [
@@ -92,10 +87,10 @@
   ],
   "tributax": [
     {
-      "title": "Get Recurrente payment link",
-      "desc": "Need by Friday Feb 6",
+      "title": "Verify payment link fix worked",
+      "desc": "Check that the fix shipped yesterday is working. If not, debug and fix.",
       "priority": "high",
-      "dueDate": "2026-02-06T12:00"
+      "dueDate": "2026-02-06T10:00"
     },
     {
       "title": "Fix legacy plan on users column",
@@ -191,6 +186,31 @@
     }
   ],
   "done": [
+    {
+      "title": "Reconcile Neonet + chargeback metrics",
+      "desc": "Calculate: (1) IVA pending refund from Neonet, (2) % of negative balances recovered, (3) double-debited amount on refunded transactions with chargebacks\n(4) store BI reports in the database and allow us to match to what is in the archivos de liquidacion",
+      "priority": "medium",
+      "completedAt": "2026-02-06T01:14:35.126Z",
+      "fromColumn": "recurrente",
+      "notes": "Ran numbers: IVA owed, reimbursed chargebacks, unsettled transactions"
+    },
+    {
+      "title": "Handle failed crypto swaps",
+      "desc": "Test, make sure it works, send recording to David and ship it",
+      "priority": "high",
+      "completedAt": "2026-02-06T01:14:35.126Z",
+      "fromColumn": "recurrente",
+      "notes": "PR published - UI updates on swap failures"
+    },
+    {
+      "title": "Get Recurrente payment link",
+      "desc": "Need by Friday Feb 6",
+      "priority": "high",
+      "dueDate": "2026-02-06T12:00",
+      "completedAt": "2026-02-06T01:14:35.123Z",
+      "fromColumn": "tributax",
+      "notes": "Shipped! Need to verify tomorrow that it worked."
+    },
     {
       "title": "Check Basecamp: sex shop decision",
       "desc": "Once connected, look up what was decided",
