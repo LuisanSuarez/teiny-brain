@@ -76,22 +76,17 @@
   "puentesat": [
     {
       "title": "Hook up sales invoice upload",
-      "desc": "Main feature expansion — currently only bills, need to add sales invoices",
+      "desc": "Main feature expansion — currently only bills, need to add sales invoices.\n\n**Planned:** Next week",
       "priority": "high"
     },
     {
       "title": "Multi-currency support (GTQ/USD)",
-      "desc": "Support both GTQ and USD currencies",
+      "desc": "Support both GTQ and USD currencies.\n\n**Planned:** Next weekend",
       "priority": "medium"
     },
     {
-      "title": "Fix column visibility on horizontal scroll",
-      "desc": "When scrolling horizontally, supplier column disappears. Options:\n- Better column order\n- Freeze columns\n- Drag-and-drop to reorder + freeze",
-      "priority": "medium"
-    },
-    {
-      "title": "Detect void invoices",
-      "desc": "Currently not detecting void invoices — uploading as regular.\n\nShould:\n- Detect void status\n- Show in red\n- Block from upload by default\n- Option to remove OR force upload with $0 amounts (some want the PDF attached)",
+      "title": "Detect void invoices (XLS only)",
+      "desc": "Can only detect void status from XLS uploads — XML doesn't have this info.\n\nShould:\n- Detect void status in XLS\n- Show in red\n- Block from upload by default\n- Option to remove OR force upload with $0 amounts",
       "priority": "medium"
     },
     {
@@ -107,10 +102,9 @@
   ],
   "tributax": [
     {
-      "title": "Verify payment link fix worked",
-      "desc": "Check that the fix shipped yesterday is working. If not, debug and fix.",
-      "priority": "high",
-      "dueDate": "2026-02-06T10:00"
+      "title": "Fix payment link (after refactor)",
+      "desc": "Payment link fix didn't work. Fix once refactor is done.\n\n**Context:** Shipped fix Feb 6, verified Feb 8 — not working. Need manual charge in meantime.",
+      "priority": "high"
     },
     {
       "title": "Fix legacy plan on users column",
@@ -129,7 +123,7 @@
     },
     {
       "title": "Big codebase refactor",
-      "desc": "Major architecture refactor in progress. Opus is handling it — large codebase so taking time.",
+      "desc": "Major architecture refactor in progress. Opus is handling it — large codebase so taking time.\n\n**Status:** In progress (Feb 2026)",
       "priority": "high"
     }
   ],
@@ -291,6 +285,23 @@
       "completedAt": "2026-02-08T00:00:00.000Z",
       "fromColumn": "puentesat",
       "notes": "New feature added during refactor"
+    },
+    {
+      "title": "Fix column visibility on horizontal scroll",
+      "desc": "When scrolling horizontally, supplier column disappears.",
+      "priority": "medium",
+      "completedAt": "2026-02-08T00:00:00.000Z",
+      "fromColumn": "puentesat",
+      "notes": "Fixed during refactor"
+    },
+    {
+      "title": "Verify payment link fix worked",
+      "desc": "Check that the fix shipped yesterday is working.",
+      "priority": "high",
+      "dueDate": "2026-02-06T10:00",
+      "completedAt": "2026-02-08T00:00:00.000Z",
+      "fromColumn": "tributax",
+      "notes": "Verified Feb 8 — DID NOT WORK. New task created to fix after refactor. Manual charge needed."
     }
   ]
 }

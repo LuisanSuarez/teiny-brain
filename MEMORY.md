@@ -24,6 +24,7 @@
 - Accounting contractors platform in Guatemala
 - Luisan is Co-founder & CTO
 - **Feb 2026:** Major codebase refactor in progress (Opus handling it — large codebase)
+- **Check-in pattern:** Ask about refactor progress on weekends
 
 ### PuenteSat (Side Project) 💜
 - Parser for SAT invoice data → bulk upload to QuickBooks
