@@ -1,5 +1,8 @@
 {
   "tributax:Get Recurrente payment link": {
     "1day": true
+  },
+  "tributax:Verify payment link fix worked": {
+    "dayof": true
   }
 }
