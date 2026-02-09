@@ -113,6 +113,11 @@
       "title": "Viáticos / Employee expense uploads",
       "desc": "Section for employee expenses (viáticos). Upload all invoices per employee as a single QuickBooks upload. Excel sheet lets them choose which columns to concatenate.\n\n**Note:** UI naming TBD — might not call it 'employee'. Backend is straightforward.\n\n📹 Meeting recorded — screenshots + video available for reference.",
       "priority": "high"
+    },
+    {
+      "title": "Change organization name from settings",
+      "desc": "Let users change their organization name from the settings page.",
+      "priority": "medium"
     }
   ],
   "tributax": [
