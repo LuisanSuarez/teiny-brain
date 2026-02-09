@@ -76,17 +76,32 @@
   "puentesat": [
     {
       "title": "Hook up sales invoice upload",
-      "desc": "Main feature expansion — currently only bills, need to add sales invoices.\n\n**Planned:** Next week",
+      "desc": "Main feature expansion — currently only bills, need to add sales invoices",
       "priority": "high"
     },
     {
-      "title": "Multi-currency support (GTQ/USD)",
-      "desc": "Support both GTQ and USD currencies.\n\n**Planned:** Next weekend",
+      "title": "Speed up backend processing",
+      "desc": "Invoice upload processing is way too slow — both XML and XLS. Need to optimize.",
       "priority": "medium"
     },
     {
-      "title": "Detect void invoices (XLS only)",
-      "desc": "Can only detect void status from XLS uploads — XML doesn't have this info.\n\nShould:\n- Detect void status in XLS\n- Show in red\n- Block from upload by default\n- Option to remove OR force upload with $0 amounts",
+      "title": "Fix PDF attachment polling architecture",
+      "desc": "After submission, we poll to check if PDFs are uploading. Current approach keeps spamming attachment requests to check status. Need a better solution (websockets? webhooks? smarter polling?).\n\n**Context:** Shipped as-is to unblock, but it's annoying and inefficient.",
+      "priority": "medium"
+    },
+    {
+      "title": "Multi-currency support (GTQ/USD)",
+      "desc": "Support both GTQ and USD currencies",
+      "priority": "medium"
+    },
+    {
+      "title": "Drag and drop column re-order",
+      "desc": "read title",
+      "priority": "low"
+    },
+    {
+      "title": "Detect void invoices",
+      "desc": "Currently not detecting void invoices — uploading as regular.\n\nShould:\n- Detect void status\n- Show in red\n- Block from upload by default\n- Option to remove OR force upload with $0 amounts (some want the PDF attached)",
       "priority": "medium"
     },
     {
@@ -95,16 +110,17 @@
       "priority": "medium"
     },
     {
-      "title": "Review Lui's IVA video",
-      "desc": "Research/learning about IVA handling",
-      "priority": "medium"
+      "title": "Viáticos / Employee expense uploads",
+      "desc": "Section for employee expenses (viáticos). Upload all invoices per employee as a single QuickBooks upload. Excel sheet lets them choose which columns to concatenate.\n\n**Note:** UI naming TBD — might not call it 'employee'. Backend is straightforward.\n\n📹 Meeting recorded — screenshots + video available for reference.",
+      "priority": "high"
     }
   ],
   "tributax": [
     {
-      "title": "Fix payment link (after refactor)",
-      "desc": "Payment link fix didn't work. Fix once refactor is done.\n\n**Context:** Shipped fix Feb 6, verified Feb 8 — not working. Need manual charge in meantime.",
-      "priority": "high"
+      "title": "Verify payment link fix worked",
+      "desc": "Check that the fix shipped yesterday is working. If not, debug and fix.",
+      "priority": "high",
+      "dueDate": "2026-02-06T10:00"
     },
     {
       "title": "Fix legacy plan on users column",
@@ -119,11 +135,6 @@
     {
       "title": "Fix duplicate subscription bug (Migo)",
       "desc": "When payment fails and we create new link, old inactive sub can reactivate → double charges. See projects/tributax/PAYMENTS.md for full context.",
-      "priority": "high"
-    },
-    {
-      "title": "Big codebase refactor",
-      "desc": "Major architecture refactor in progress. Opus is handling it — large codebase so taking time.\n\n**Status:** In progress (Feb 2026)",
       "priority": "high"
     }
   ],
@@ -206,102 +217,25 @@
   ],
   "done": [
     {
-      "title": "Reconcile Neonet + chargeback metrics",
-      "desc": "Calculate: (1) IVA pending refund from Neonet, (2) % of negative balances recovered, (3) double-debited amount on refunded transactions with chargebacks\n(4) store BI reports in the database and allow us to match to what is in the archivos de liquidacion",
+      "title": "Review Lui's IVA video",
+      "desc": "Research/learning about IVA handling",
       "priority": "medium",
-      "completedAt": "2026-02-06T01:14:35.126Z",
-      "fromColumn": "recurrente",
-      "notes": "Ran numbers: IVA owed, reimbursed chargebacks, unsettled transactions"
+      "completedAt": "2026-02-09T01:23:02.856Z",
+      "fromColumn": "puentesat"
     },
     {
-      "title": "Handle failed crypto swaps",
-      "desc": "Test, make sure it works, send recording to David and ship it",
-      "priority": "high",
-      "completedAt": "2026-02-06T01:14:35.126Z",
-      "fromColumn": "recurrente",
-      "notes": "PR published - UI updates on swap failures"
-    },
-    {
-      "title": "Get Recurrente payment link",
-      "desc": "Need by Friday Feb 6",
-      "priority": "high",
-      "dueDate": "2026-02-06T12:00",
-      "completedAt": "2026-02-06T01:14:35.123Z",
-      "fromColumn": "tributax",
-      "notes": "Shipped! Need to verify tomorrow that it worked."
-    },
-    {
-      "title": "Check Basecamp: sex shop decision",
-      "desc": "Once connected, look up what was decided",
+      "title": "Unblock repeated invoices",
+      "desc": "Currently blocks repeated invoices (good). But sometimes they deleted from QuickBooks and need to re-upload.\n\nKeep blocking initially, but add option to unblock with confirmation modal.",
       "priority": "medium",
-      "completedAt": "2026-02-05T19:56:09.082Z",
-      "fromColumn": "teiny",
-      "notes": "Decision reversed: MCCs 5945/5947 are safe for adult retail. Comment posted on Basecamp."
-    },
-    {
-      "title": "Bundled invoices (viáticos)",
-      "desc": "Generic bundled invoice feature — evolved from viáticos concept. Group invoices together for single QuickBooks upload with custom column concatenation.",
-      "priority": "high",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "puentesat",
-      "notes": "Shipped! Originally viáticos for employee expenses, became generic bundled invoice feature."
+      "completedAt": "2026-02-09T01:22:43.189Z",
+      "fromColumn": "puentesat"
     },
     {
       "title": "Remove invoices from upload batch",
       "desc": "Let users remove/unmark invoices from a batch instead of refreshing and re-uploading everything",
       "priority": "medium",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "puentesat",
-      "notes": "Added action button to remove invoices from batch"
-    },
-    {
-      "title": "Unblock repeated invoices",
-      "desc": "Keep blocking initially, but add option to unblock with confirmation modal.",
-      "priority": "medium",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "puentesat",
-      "notes": "Added action button to unlock repeated invoices for re-submission"
-    },
-    {
-      "title": "XLS file upload support",
-      "desc": "Support uploading XLS files in addition to existing formats",
-      "priority": "medium",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "puentesat",
-      "notes": "New feature added during refactor"
-    },
-    {
-      "title": "PuenteSat architecture refactor",
-      "desc": "Verb-noun file structure with separated controller routes, business logic moved to models",
-      "priority": "high",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "puentesat",
-      "notes": "Major refactor complete — much cleaner codebase now"
-    },
-    {
-      "title": "Custom columns feature",
-      "desc": "Add certain custom columns to invoice views",
-      "priority": "medium",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "puentesat",
-      "notes": "New feature added during refactor"
-    },
-    {
-      "title": "Fix column visibility on horizontal scroll",
-      "desc": "When scrolling horizontally, supplier column disappears.",
-      "priority": "medium",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "puentesat",
-      "notes": "Fixed during refactor"
-    },
-    {
-      "title": "Verify payment link fix worked",
-      "desc": "Check that the fix shipped yesterday is working.",
-      "priority": "high",
-      "dueDate": "2026-02-06T10:00",
-      "completedAt": "2026-02-08T00:00:00.000Z",
-      "fromColumn": "tributax",
-      "notes": "Verified Feb 8 — DID NOT WORK. New task created to fix after refactor. Manual charge needed."
+      "completedAt": "2026-02-09T01:22:33.649Z",
+      "fromColumn": "puentesat"
     }
   ]
 }
