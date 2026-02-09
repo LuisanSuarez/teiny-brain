@@ -106,7 +106,7 @@
     },
     {
       "title": "Figure out special taxes (gas, tourism)",
-      "desc": "Edge cases for parser",
+      "desc": "Edge cases for parser.\n\n**Important:** satTaxKey format differs between XLS and XML. When adding new tax types, check how taxes are structured in XLS — different format than XML. Must handle both.",
       "priority": "medium"
     },
     {
