@@ -117,10 +117,19 @@
   ],
   "tributax": [
     {
-      "title": "Verify payment link fix worked",
-      "desc": "Check that the fix shipped yesterday is working. If not, debug and fix.",
-      "priority": "high",
-      "dueDate": "2026-02-06T10:00"
+      "title": "Big codebase refactor",
+      "desc": "Major architecture refactor in progress. Opus is handling it — large codebase.\n\n**Status:** In progress (Feb 2026)",
+      "priority": "high"
+    },
+    {
+      "title": "Fix payment link (after refactor)",
+      "desc": "Payment link fix didn't work. Fix once refactor is done.\n\n**Context:** Shipped fix Feb 6, verified Feb 8 — not working. Manual charge needed in meantime.",
+      "priority": "high"
+    },
+    {
+      "title": "Fix bank transfer links (after refactor)",
+      "desc": "Fix bank transfer links once refactor wraps up.",
+      "priority": "high"
     },
     {
       "title": "Fix legacy plan on users column",
