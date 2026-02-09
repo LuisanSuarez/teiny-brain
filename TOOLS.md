@@ -20,6 +20,13 @@ When posting to Basecamp:
 
 ---
 
+## PuenteSat Dev
+
+⚠️ **Always use dev database locally!**
+Bun's hot reload burns through database connections. Don't kill production connections for real users.
+
+---
+
 ## What Goes Here
 
 Things like:
