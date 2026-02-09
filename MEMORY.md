@@ -10,6 +10,9 @@
 - Has a son named Simon
 - Timezone: America/Guatemala (CST)
 - Works across 3 projects with Recurrente being the busiest (day job)
+- **Life stage:** "Convert knowledge into leverage" phase — processing bottleneck, not input deficit
+- **Decompression is valid** — don't need to optimize every moment; recovery matters
+- See `memory/luisan-books-decompression.md` for book recs & context
 
 ---
 
