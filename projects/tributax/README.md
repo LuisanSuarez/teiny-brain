@@ -7,7 +7,7 @@ Accounting contractors in Guatemala
 - **Status:** Active startup
 
 ## Current Tasks
-See [TASKBOARD.md](../../TASKBOARD.md) for active tasks.
+See the kanban board for active tasks.
 
 ### Pricing Tiers (Standardizing)
 | Tier | Price (Q) | Description |

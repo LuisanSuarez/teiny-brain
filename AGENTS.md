@@ -210,3 +210,9 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## Config Safety (Teiny)
+
+- Never set `agents.defaults.contextTokens` below **16000** for the current model set. Verify minimums before patching.
+- Before applying any config patch, run a quick preflight: read config + schema, confirm constraints, and call out any risky change.
+- After any config patch that affects models/contexts, re-check effective model defaults and context window constraints.

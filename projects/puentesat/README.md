@@ -8,7 +8,7 @@ Parser for SAT invoice data → bulk upload to QuickBooks
 - **Status:** Early stage, getting clients
 
 ## Current Tasks
-See [TASKBOARD.md](../../TASKBOARD.md) for active tasks.
+See the kanban board for active tasks.
 
 ### Backlog / Ideas
 - Sales invoice upload (hooking up)

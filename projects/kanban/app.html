@@ -48,6 +48,7 @@
     .tributax-col .column-header { border-color: #4ecdc4; }
     .personal-col .column-header { border-color: #feca57; }
     .teiny-col .column-header { border-color: #ff6b6b; background: rgba(255,107,107,0.1); }
+    .today-col .column-header { border-color: #60a5fa; background: rgba(96,165,250,0.1); }
     .cards { display: flex; flex-direction: column; gap: 8px; min-height: 100px; }
     .card {
       background: rgba(255,255,255,0.08);
@@ -119,6 +120,15 @@
   <div class="help" id="help">Click to select • ↑↓ reorder • ←→ move columns • T = Teiny • 1-5 = jump to column • Enter = edit • Esc = deselect</div>
   
   <div class="board">
+    <div class="column today-col">
+      <div class="column-header">
+        <span class="emoji">📌</span>
+        <h2>Today</h2>
+        <span class="count" id="today-count">0</span>
+      </div>
+      <div class="cards" id="today-cards"></div>
+      <button class="add-btn" onclick="openModal('today')">+ Add task</button>
+    </div>
     <div class="column teiny-col">
       <div class="column-header">
         <span class="emoji">🧠</span>
@@ -191,6 +201,7 @@
     <div class="modal-box">
       <h3>Move to...</h3>
       <div class="move-btns">
+        <button onclick="moveTo('today')">📌 Today</button>
         <button onclick="moveTo('teiny')">🧠 Teiny</button>
         <button onclick="moveTo('recurrente')">🔥 Recurrente</button>
         <button onclick="moveTo('puentesat')">💜 PuenteSat</button>
@@ -204,7 +215,7 @@
   </div>
 
 <script>
-const COLUMNS = ['teiny', 'recurrente', 'puentesat', 'tributax', 'personal'];
+const COLUMNS = ['today', 'teiny', 'recurrente', 'puentesat', 'tributax', 'personal'];
 let data = {};
 COLUMNS.forEach(c => data[c] = []);
 

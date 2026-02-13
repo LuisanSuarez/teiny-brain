@@ -1,10 +1,17 @@
 {
-  "teiny": [
+  "today": [
     {
-      "title": "Research: Stripe/Adyen/Square sales incentives",
-      "desc": "How do they structure sales incentives?",
+      "title": "InFile facturación - finish with Max",
+      "desc": "Review improvements",
       "priority": "high"
     },
+    {
+      "title": "placeholder",
+      "desc": "avoid losing a column",
+      "priority": "low"
+    }
+  ],
+  "teiny": [
     {
       "title": "Old PRs - Sandi Metz review",
       "desc": "Backlog of PRs that need to go through reviewer",
@@ -24,19 +31,14 @@
       "title": "Chargeback states PR",
       "desc": "Update won/lost states + save to database",
       "priority": "medium"
+    },
+    {
+      "title": "Research: Stripe/Adyen/Square sales incentives",
+      "desc": "How do they structure sales incentives?",
+      "priority": "high"
     }
   ],
   "recurrente": [
-    {
-      "title": "Retroactive Inviter + Invitee",
-      "desc": "Finish writing the PR, testing and sending\n1. we need to hide the \"add inviter\" from the UI users see and move it to admin only\n2. i think there's a logic bug when checking if we can re-add the reward\n3. triple-check that the way we add it will be re-counted on Profit.rb\n\n**Status:** Almost finished PR (Feb 5)",
-      "priority": "high"
-    },
-    {
-      "title": "InFile facturación - finish with Max",
-      "desc": "Review improvements",
-      "priority": "high"
-    },
     {
       "title": "AI Withdrawal Reviewer rules",
       "desc": "add a rule to the ai withdrawal reviewer that checks if there are payments back and forth (a paid b, b paid a)",
@@ -150,6 +152,11 @@
       "title": "Fix duplicate subscription bug (Migo)",
       "desc": "When payment fails and we create new link, old inactive sub can reactivate → double charges. See projects/tributax/PAYMENTS.md for full context.",
       "priority": "high"
+    },
+    {
+      "title": "Wrong address on Invoice",
+      "desc": "Factura ID: 64801\nElige establecimiento 1, pero le aparece la direccion del establecimiento 2 en la factura.",
+      "priority": "medium"
     }
   ],
   "personal": [
@@ -199,11 +206,6 @@
       "priority": "medium"
     },
     {
-      "title": "Buy queen mattress",
-      "desc": "",
-      "priority": "medium"
-    },
-    {
       "title": "Ask Valeria about Rocky",
       "desc": "She offered to help with adoption",
       "priority": "medium"
@@ -231,25 +233,32 @@
   ],
   "done": [
     {
-      "title": "Review Lui's IVA video",
-      "desc": "Research/learning about IVA handling",
+      "title": "Buy queen mattress",
+      "desc": "lunch: 2pm. \nyou can use credit on the card to start paying it",
       "priority": "medium",
-      "completedAt": "2026-02-09T01:23:02.856Z",
-      "fromColumn": "puentesat"
+      "completedAt": "2026-02-11T17:41:51.429Z",
+      "fromColumn": "today"
     },
     {
-      "title": "Unblock repeated invoices",
-      "desc": "Currently blocks repeated invoices (good). But sometimes they deleted from QuickBooks and need to re-upload.\n\nKeep blocking initially, but add option to unblock with confirmation modal.",
-      "priority": "medium",
-      "completedAt": "2026-02-09T01:22:43.189Z",
-      "fromColumn": "puentesat"
+      "title": "Retroactive Inviter + Invitee",
+      "desc": "Finish writing the PR, testing and sending\n1. we need to hide the \"add inviter\" from the UI users see and move it to admin only\n2. i think there's a logic bug when checking if we can re-add the reward\n3. triple-check that the way we add it will be re-counted on Profit.rb\n\n**Status:** Almost finished PR (Feb 5)",
+      "priority": "high",
+      "completedAt": "2026-02-11T17:41:48.390Z",
+      "fromColumn": "today"
     },
     {
-      "title": "Remove invoices from upload batch",
-      "desc": "Let users remove/unmark invoices from a batch instead of refreshing and re-uploading everything",
+      "title": "cron &/or manual fail crypto swaps",
+      "desc": "Diego Rivera still needs failing",
+      "priority": "high",
+      "completedAt": "2026-02-10T21:50:16.372Z",
+      "fromColumn": "today"
+    },
+    {
+      "title": "placeholder",
+      "desc": "",
       "priority": "medium",
-      "completedAt": "2026-02-09T01:22:33.649Z",
-      "fromColumn": "puentesat"
+      "completedAt": "2026-02-10T14:06:25.336Z",
+      "fromColumn": "today"
     }
   ]
 }
