@@ -1,6 +1,6 @@
 # MEMORY.md - Teiny's Long-Term Memory
 
-*Last updated: 2026-02-08*
+*Last updated: 2026-02-13*
 
 ---
 
@@ -64,6 +64,6 @@
 
 ## Lessons Learned
 
-*(Add as I make mistakes or discover things)*
+- **2026-02-13:** Environment is now running on a VPS. Workspace bootstrap + import from `teiny-brain` succeeded, and local git commit flow works.
 
 ---
