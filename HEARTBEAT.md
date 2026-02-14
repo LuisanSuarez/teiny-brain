@@ -1,5 +1,9 @@
 # HEARTBEAT.md
 
+## Overnight Execution Update (active)
+While sales-invoice overnight work is in progress, send a **short progress update every heartbeat** (1-2 lines) instead of HEARTBEAT_OK.
+Focus update on: what was completed since last heartbeat and what's next.
+
 ## Task Reminders
 On heartbeat, check `projects/kanban/data.json` for tasks with due dates:
 - **1 week before**: Gentle reminder ("X is coming up next week")

@@ -27,6 +27,17 @@ Bun's hot reload burns through database connections. Don't kill production conne
 
 ---
 
+### Shared Memory Repo Workflow (Teiny + TeinyVPS)
+For `teiny-brain` / memory repo changes:
+- **Always `git pull --rebase` before starting work**
+- Commit locally
+- Push after changes
+- If push rejects, rebase first, then push
+
+This avoids soul/memory drift between local and VPS agents.
+
+---
+
 ## What Goes Here
 
 Things like:
