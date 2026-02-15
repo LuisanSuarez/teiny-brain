@@ -40,6 +40,12 @@ This avoids soul/memory drift between local and VPS agents.
 
 ## What Goes Here
 
+### SSH
+- `hetzner` host pinned to `~/.ssh/teinyvps` with `IdentitiesOnly yes` to avoid 1Password agent stalls.
+
+### Repos
+- Puentesat repo: /Trabajo/Fluxio/code
+
 Things like:
 
 - Camera names and locations
