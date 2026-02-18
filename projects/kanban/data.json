@@ -73,6 +73,26 @@
       "title": "Talk to big customers with Jan chargebacks (churning)",
       "desc": "Identify big customers who had chargebacks in January and are now churning. Come up with a plan before reaching out — what's the goal? Retention? Understanding? Win-back offer?",
       "priority": "high"
+    },
+    {
+      "title": "Investigar y arreglar retiros aprobados no liquidados",
+      "desc": "Entrarle a investigar y arreglar de raíz los retiros aprobados que no se suben a la liquidación.",
+      "priority": "high"
+    },
+    {
+      "title": "Escalar casos activos de retiros a Max",
+      "desc": "Cuando tenga casos activos, pasárselos a Max con contexto completo para que un agent revise y proponga fix.",
+      "priority": "medium"
+    },
+    {
+      "title": "Investigar descuadre de retenciones + documentar",
+      "desc": "Revisar qué causó el descuadre reciente de retenciones y documentarlo en Basecamp.",
+      "priority": "high"
+    },
+    {
+      "title": "Programar 3 correos de contracargos",
+      "desc": "Programar 3 correos de contracargos: uno temprano, uno intermedio, uno 1 día antes del límite.",
+      "priority": "medium"
     }
   ],
   "puentesat": [
@@ -160,6 +180,11 @@
     }
   ],
   "personal": [
+    {
+      "title": "Comprar bañera para Simón (grande vs pequeña)",
+      "desc": "Encontré una bañera grande para Simón. Duda: evitar estar agachado; considerar una más pequeña.",
+      "priority": "medium"
+    },
     {
       "title": "Get Guatemalan passport",
       "desc": "",

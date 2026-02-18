@@ -1,0 +1,26 @@
+ObjC.import('Cocoa');
+function makeIcon(text, outPath, size) {
+  const img = $.NSImage.alloc.initWithSize($.NSMakeSize(size, size));
+  img.lockFocus();
+  const bg = $.NSColor.colorWithSRGBRed_green_blue_alpha(0.12, 0.13, 0.16, 1.0);
+  bg.set();
+  $.NSRectFill($.NSMakeRect(0, 0, size, size));
+  const attrs = $.NSMutableDictionary.alloc.init;
+  const font = $.NSFont.systemFontOfSize(size * 0.6);
+  attrs.setObject_forKey(font, $.NSFontAttributeName);
+  attrs.setObject_forKey($.NSColor.whiteColor, $.NSForegroundColorAttributeName);
+  const str = $.NSString.alloc.initWithUTF8String(text);
+  const strSize = str.sizeWithAttributes(attrs);
+  const rect = $.NSMakeRect((size - strSize.width) / 2, (size - strSize.height) / 2, size, size);
+  str.drawInRect_withAttributes(rect, attrs);
+  img.unlockFocus();
+  const tiff = img.TIFFRepresentation;
+  const rep = $.NSBitmapImageRep.imageRepWithData(tiff);
+  const png = rep.representationUsingType_properties($.NSPNGFileType, $());
+  png.writeToFile_atomically($(outPath), true);
+}
+
+const args = $.NSProcessInfo.processInfo.arguments;
+const text = ObjC.unwrap(args.objectAtIndex(2));
+const outPath = ObjC.unwrap(args.objectAtIndex(3));
+makeIcon(text, outPath, 1024);

@@ -1,0 +1,11 @@
+Implement the plan in PLAN.md on the current branch (inhouse-invoice).
+
+The branch already has ~80% of the work done: InfileSettings model, TaxInvoice model, controllers, views, facades, and workers are all in place. What remains is:
+
+1. Consolidate 4 separate migrations into 1 (none have run in production)
+2. Wire TaxInvoice into Invoice's creation/void/retry flow (the core wiring — Invoice still calls Infile directly instead of going through TaxInvoice)
+3. Create BackfillTaxInvoicesWorker for ~45K historical records
+4. Clean up any remaining InvoicingActivation references
+5. Run tests and fix failures
+
+The plan has exact code snippets for every change. Follow it step by step. Run tests after each step to catch issues early.
