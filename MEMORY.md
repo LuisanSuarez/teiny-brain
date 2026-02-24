@@ -59,6 +59,7 @@
 - Brave browser (not Chrome) — has all cookies/sessions
 - Ask before installing anything (Homebrew, npm, pip, etc.)
 - Basecamp: Always save as draft or notify only Luisan (ID: 47257318)
+- Prefers a lean, low-token setup when usage is low; disable non-essential daily automations if they’re not being used.
 
 ---
 
