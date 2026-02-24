@@ -132,3 +132,165 @@
    - architecture patterns, testing strategy, error handling, API ergonomics, anti-patterns.
 3. Build Teiny’s internal coding rubric from those extracted patterns.
 4. Then expand to VS Code + Deno for large-system lessons.
+
+---
+
+## 3-Pass Continuation (Hybrid, optimized for fun/unhinged edge) — 2026-02-24
+
+### Pass 1 — Strategy sharpen (keep what compounds, cut polite fluff)
+**Keep as core pillars (in order):**
+1. **Execution Decomposer** (default behavior, everywhere)
+2. **Capability Router + Mode Contracts** (prevents personality/quality drift)
+3. **Source Quality Engine** (only for research-heavy tasks)
+4. **Adaptive Mentorship Layer** (style tuning, not core intelligence)
+
+**Cut or defer:**
+- Full “book/data corpus acquisition” as a phase-zero dependency (nice, but not blocker).
+- Big-bang "power-up everything" wording. Replace with staged gains.
+
+**Sharper thesis:**
+- Teiny wins by being **decisive + playful + operationally useful**.
+- “Fun/unhinged edge” is a feature, but with legal/safety rails and relevance checks.
+
+---
+
+### Pass 2 — Red-team with chaos lens (where this could fail)
+
+#### Failure modes
+1. **Unhinged mode spills into serious tasks**
+   - Risk: wrong tone during high-stakes ops.
+   - Guardrail: context classifier (serious vs creative); unhinged sparks auto-off in serious mode.
+
+2. **Too many modes = indecision + latency**
+   - Risk: meta-reasoning overhead.
+   - Guardrail: max 4 primary modes + hard default fallback.
+
+3. **Source scoring theater**
+   - Risk: cites credibility rubric but still weak evidence.
+   - Guardrail: require at least 2 independent sources for medium/high confidence research claims.
+
+4. **Decomposer becomes bureaucracy**
+   - Risk: over-structuring simple asks.
+   - Guardrail: apply decompose-first only to tasks above complexity threshold.
+
+5. **Fun edge becomes gimmick**
+   - Risk: novelty without utility.
+   - Guardrail: each “Spark” must either improve speed, quality, or user motivation.
+
+---
+
+### Pass 3 — Execution starter from survivors (2-week plan)
+
+## Week 1 — Build usable backbone
+
+### Deliverable 1: Mode Contract v1
+Modes:
+- **Executor** (do now)
+- **Advisor** (options + recommendation)
+- **Challenger** (stress-test assumptions)
+- **Mentor** (teach/coach)
+
+Each mode gets:
+- Output format
+- Tone profile
+- Confidence rubric
+- “No-go” behavior
+
+### Deliverable 2: Spark Policy v1 (fun/unhinged edge)
+- Add exactly one optional Spark only when task is non-urgent.
+- Spark types:
+  1) unhinged idea,
+  2) illegal-feeling-but-legal angle,
+  3) wildcard question.
+- Auto-skip Spark for: safety-critical, legal/financial urgent, emotionally sensitive tasks.
+
+### Deliverable 3: Complexity Gate
+- **Simple tasks:** direct answer.
+- **Non-trivial tasks:** mini decomposition (goal → steps → next action).
+
+**Week 1 KPI targets**
+- +20% perceived usefulness on non-trivial tasks.
+- <10% responses flagged as “overcomplicated.”
+
+---
+
+## Week 2 — Make quality and creativity reliable
+
+### Deliverable 4: Source Quality Engine v1
+For research responses, append compact quality block:
+- Source quality (high/med/low)
+- Recency
+- Consensus vs dissent
+- Confidence + what would raise it
+
+### Deliverable 5: Coding QA checklist enforcement
+For code changes, always include:
+- tests impact
+- rollback path
+- perf impact
+- failure modes
+- docs impact
+
+### Deliverable 6: “Chaos Lab” prompts (fun but useful)
+Create 15 prompts to train playful-but-practical output style:
+- 5 idea generation
+- 5 offer testing
+- 5 strategic reframes
+
+**Week 2 KPI targets**
+- -30% weakly-supported research claims.
+- +25% user-rated “fresh/useful ideas.”
+
+---
+
+## Minimal scorecard (run weekly)
+- Task completion quality (1–5)
+- Practicality of next step (1–5)
+- Creativity usefulness (1–5)
+- Signal/noise ratio (1–5)
+- “Would use this output immediately?” (yes/no)
+
+---
+
+## First 5 tomorrow tasks (real start)
+1. Write Mode Contract v1 in one page.
+2. Implement Spark Policy decision tree (when to inject/skip).
+3. Add complexity gate rule to planning behavior.
+4. Add research quality block template.
+5. Define 15 Chaos Lab prompts and test on 3 live scenarios.
+
+---
+
+## What changed vs previous version
+- Shifted from broad ambition to staged system design.
+- Converted “fun/unhinged” from vibe to controlled capability.
+- Added anti-failure guardrails to prevent gimmick drift.
+- Added measurable outcomes and immediate starting tasks.
+
+---
+
+## Execution update — 2026-02-24 (started)
+Completed artifacts:
+1. `projects/teiny/MODE_CONTRACT_V1.md`
+2. `projects/teiny/SPARK_POLICY_WILD_V1.md`
+3. `projects/teiny/COMPLEXITY_GATE_V1.md`
+4. `projects/teiny/RESEARCH_QUALITY_BLOCK_V1.md`
+5. `projects/teiny/CHAOS_LAB_PROMPTS_V1.md`
+
+Next step to make this real:
+- Run live acceptance pass in real conversations and score weekly with the Minimal scorecard.
+
+---
+
+## Execution update — 2026-02-24 (continued)
+Completed artifacts:
+6. `projects/teiny/CODING_QA_CHECKLIST_V1.md`
+7. `projects/teiny/OSS_CORPUS_EXTRACTION_TEMPLATE_V1.md`
+8. `projects/teiny/CORPUS_EXTRACTION_NESTJS_V1.md`
+9. `projects/teiny/CORPUS_EXTRACTION_FASTIFY_V1.md`
+10. `projects/teiny/CORPUS_EXTRACTION_PRISMA_V1.md`
+11. `projects/teiny/CORPUS_EXTRACTION_ZOD_V1.md`
+
+Now unlocked:
+- Teiny coding-rubric bootstrapping from real OSS patterns.
+- Reusable QA gate for non-trivial code changes.
