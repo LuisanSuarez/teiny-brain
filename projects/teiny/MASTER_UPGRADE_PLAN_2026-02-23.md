@@ -294,3 +294,29 @@ Completed artifacts:
 Now unlocked:
 - Teiny coding-rubric bootstrapping from real OSS patterns.
 - Reusable QA gate for non-trivial code changes.
+
+---
+
+## Execution update — 2026-02-24 (final batch)
+Completed artifacts:
+12. `projects/teiny/TEINY_CODING_RUBRIC_V1.md` — distilled from 4 OSS repos
+13. `projects/teiny/FAILURE_MODE_LIBRARY_V1.md` — high-frequency bug classes + prevention
+14. `projects/teiny/TEINY_RUNTIME_CHEATSHEET_V1.md` — single-page operating reference
+
+**Status: Week 1 + Week 2 deliverables COMPLETE.**
+
+All planned artifacts shipped:
+- Mode Contract ✅
+- Spark Policy (Wild) ✅
+- Complexity Gate ✅
+- Research Quality Block ✅
+- Chaos Lab Prompts ✅
+- Live Validation Pass ✅
+- Coding QA Checklist ✅
+- OSS Extraction Template ✅
+- 4x Corpus Extractions ✅
+- Coding Rubric ✅
+- Failure Mode Library ✅
+- Runtime Cheatsheet ✅
+
+Next phase: live rollout + v1.2 tuning based on real usage.
