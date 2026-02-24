@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tao of Life</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Tao of Life</h1>
+      <div class="actions">
+        <button id="beforeBedToggle">Before-bed mode</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>New Maxim</h2>
+        <form id="maximForm">
+          <input id="title" placeholder="Maxim title" required maxlength="80" />
+          <textarea id="body" placeholder="Write the maxim..." required maxlength="500"></textarea>
+          <div class="row">
+            <label><input id="favorite" type="checkbox" /> Favorite today</label>
+            <label><input id="lived" type="checkbox" /> Lived today</label>
+          </div>
+          <button type="submit">Save maxim</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Tonight's Maxims</h2>
+        <div id="list" class="list"></div>
+      </section>
+    </main>
+
+    <template id="itemTpl">
+      <article class="item">
+        <h3></h3>
+        <p class="body"></p>
+        <div class="meta"></div>
+        <div class="item-actions">
+          <button data-act="favorite"></button>
+          <button data-act="lived"></button>
+          <button data-act="edit">Edit</button>
+          <button data-act="delete" class="danger">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
