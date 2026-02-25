@@ -7,19 +7,23 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
+    <header class="topbar" id="topbar">
       <h1>Tao of Life</h1>
       <div class="actions">
+        <button id="focusModeToggle">Focus mode</button>
+        <button id="randomBtn">Random card</button>
+        <button id="oracleBtn">Chaos Oracle</button>
         <button id="beforeBedToggle">Before-bed mode</button>
       </div>
     </header>
 
     <main>
-      <section class="card">
+      <section class="card" id="composerCard">
         <h2>New Maxim</h2>
         <form id="maximForm">
           <input id="title" placeholder="Maxim title" required maxlength="80" />
           <textarea id="body" placeholder="Write the maxim..." required maxlength="500"></textarea>
+          <textarea id="note" placeholder="Optional deeper note (hidden by default in focus mode)" maxlength="800"></textarea>
           <div class="row">
             <label><input id="favorite" type="checkbox" /> Favorite today</label>
             <label><input id="lived" type="checkbox" /> Lived today</label>
@@ -28,7 +32,35 @@
         </form>
       </section>
 
-      <section class="card">
+      <section class="card" id="syncCard">
+        <h2>Sync Phrase</h2>
+        <input id="syncPhrase" placeholder="your-sync-phrase" maxlength="120" />
+        <div class="focus-actions">
+          <button id="savePhraseBtn">Save phrase</button>
+          <button id="genPhraseBtn">Generate phrase</button>
+          <button id="copyPhraseBtn">Copy phrase</button>
+          <button id="emailPhraseBtn">Send to email</button>
+          <button id="exportPackBtn">Export pack</button>
+          <button id="importPackBtn">Import pack</button>
+        </div>
+        <p class="hint" id="phraseHint">Simple mode: keep this phrase safe. Export pack lets you move data across devices now.</p>
+      </section>
+
+      <section class="card" id="focusCard" hidden>
+        <h2>Meditation Card <span id="spiceBadge" class="badge">calm</span></h2>
+        <p id="oracleText" class="oracle" hidden></p>
+        <article class="focus-item" id="focusItem"></article>
+        <div class="focus-actions" id="focusActions">
+          <button id="prevBtn">Previous</button>
+          <button id="nextBtn">Next</button>
+          <button id="expandBtn">Expand note</button>
+          <button id="chromeBtn">Hide UI</button>
+          <button id="spiceBtn">Spice level</button>
+        </div>
+        <p class="hint">Shortcuts: ←/→ next card · Space expand note · C hide UI · R random</p>
+      </section>
+
+      <section class="card" id="listCard">
         <h2>Tonight's Maxims</h2>
         <div id="list" class="list"></div>
       </section>
@@ -42,12 +74,14 @@
         <div class="item-actions">
           <button data-act="favorite"></button>
           <button data-act="lived"></button>
+          <button data-act="focus">Meditate</button>
           <button data-act="edit">Edit</button>
           <button data-act="delete" class="danger">Delete</button>
         </div>
       </article>
     </template>
 
+    <button id="revealUiBtn" class="reveal-ui" hidden>Show controls</button>
     <script src="app.js"></script>
   </body>
 </html>
