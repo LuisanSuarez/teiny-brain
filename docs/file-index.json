@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-02T10:26:00-06:00",
+  "entries": [
+    {
+      "key": "workspace guide",
+      "path": "/Users/luisan/.openclaw/workspace/AGENTS.md",
+      "type": "config",
+      "notes": "Main operating rules for Teiny in this workspace.",
+      "aliases": ["agents", "workspace rules"],
+      "lastVerified": "2026-03-02T10:24:00-06:00"
+    },
+    {
+      "key": "global claude config",
+      "path": "/Users/luisan/.claude/CLAUDE.md",
+      "type": "config",
+      "notes": "Canonical Claude coding/review workflow instructions.",
+      "aliases": ["claude md", "ship confidence prompt", "tao workflow prompt"],
+      "lastVerified": "2026-03-02T10:24:00-06:00"
+    },
+    {
+      "key": "claude review confidence copy",
+      "path": "/Users/luisan/.openclaw/workspace/docs/prompts/claude-review-confidence.md",
+      "type": "prompt",
+      "notes": "Workspace copy of canonical Claude review + ship confidence prompt sections.",
+      "aliases": ["review confidence prompt", "ship confidence prompt copy", "tao review prompt copy"],
+      "lastVerified": "2026-03-02T10:26:00-06:00"
+    },
+    {
+      "key": "file index",
+      "path": "/Users/luisan/.openclaw/workspace/docs/FILE_INDEX.md",
+      "type": "workflow",
+      "notes": "Human-readable fast lookup index.",
+      "aliases": ["index", "file map"],
+      "lastVerified": "2026-03-02T10:24:00-06:00"
+    },
+    {
+      "key": "machine file index",
+      "path": "/Users/luisan/.openclaw/workspace/docs/file-index.json",
+      "type": "workflow",
+      "notes": "Machine-readable file lookup index.",
+      "aliases": ["json index"],
+      "lastVerified": "2026-03-02T10:24:00-06:00"
+    },
+    {
+      "key": "tao review skill",
+      "path": "/Users/luisan/.openclaw/workspace/skills/tao-review/SKILL.md",
+      "type": "workflow",
+      "notes": "Skill instructions for Tao review process.",
+      "aliases": ["tao skill", "review skill"],
+      "lastVerified": "2026-03-02T10:24:00-06:00"
+    }
+  ]
+}

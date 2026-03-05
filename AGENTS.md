@@ -215,6 +215,33 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## Auto-Index Useful Files (mandatory)
+
+Maintain a persistent file index at:
+- `docs/FILE_INDEX.md` (human-readable)
+- `docs/file-index.json` (machine-readable)
+
+### When to update (without being asked)
+Update both indexes immediately when:
+1. Creating any new workflow/runbook/prompt/config file
+2. Creating any file meant for repeated future use
+3. Spending >2 minutes locating a file (add it so next lookup is instant)
+4. User mentions "we'll need this later" or similar
+
+### Required index fields (`docs/file-index.json`)
+- `key`: short lookup name (how Luisan would ask for it)
+- `path`: absolute path
+- `type`: config | workflow | prompt | runbook | project-root | log
+- `notes`: 1-line purpose
+- `aliases`: alternate lookup names
+- `lastVerified`: ISO timestamp
+
+### Retrieval protocol (always)
+1. Check `docs/file-index.json` first
+2. If no hit, check `docs/FILE_INDEX.md`
+3. Only then search the filesystem/logs
+4. If a search succeeds, add the new entry immediately
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.

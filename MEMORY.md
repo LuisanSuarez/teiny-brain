@@ -60,6 +60,8 @@
 - Ask before installing anything (Homebrew, npm, pip, etc.)
 - Basecamp: Always save as draft or notify only Luisan (ID: 47257318)
 - Prefers a lean, low-token setup when usage is low; disable non-essential daily automations if they’re not being used.
+- For coding while mobile/on-the-fly: default to **single-agent, milestone-only updates, no raw terminal log dumps**, and concise review output.
+- Wants proactive warnings when a workflow is likely to burn many tokens (e.g., parallel agents, frequent polling, verbose logs).
 
 ---
 

@@ -34,6 +34,15 @@ For `teiny-brain` / memory repo changes:
 - Push after changes
 - If push rejects, rebase first, then push
 
+If pull/rebase is blocked by unstaged changes, default recovery flow is:
+1. `git stash -u`
+2. `git pull --rebase`
+3. `git stash pop`
+4. Resolve conflicts if any
+5. Commit as needed
+
+Only interrupt Luisan if the flow fails (hard conflicts, broken stash apply, or abnormal git state).
+
 This avoids soul/memory drift between local and VPS agents.
 
 ---
