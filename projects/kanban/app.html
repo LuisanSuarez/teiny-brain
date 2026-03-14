@@ -44,6 +44,7 @@
       border-radius: 10px; 
     }
     .recurrente-col .column-header { border-color: #ff6b6b; }
+    .recurrente-accounting-col .column-header { border-color: #7dd3fc; background: rgba(125,211,252,0.12); }
     .puentesat-col .column-header { border-color: #a855f7; }
     .tributax-col .column-header { border-color: #4ecdc4; }
     .personal-col .column-header { border-color: #feca57; }
@@ -112,13 +113,71 @@
     .move-btns button { flex: 1; min-width: 120px; padding: 10px; background: rgba(255,255,255,0.1); border: none; color: #fff; border-radius: 6px; cursor: pointer; }
     .move-btns button:hover { background: rgba(255,255,255,0.2); }
     .move-btns button.current { opacity: 0.5; cursor: not-allowed; }
+  
+
+    .board-tabs {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0 10px;
+    }
+    .board-tab {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #f3f4f6;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .board-tab.active {
+      background: rgba(99,102,241,0.35);
+      border-color: rgba(129,140,248,0.8);
+    }
+    .view-hidden { display: none !important; }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .checklist-card {
+      background: rgba(15,23,42,0.75);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .checklist-card summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+    .checklist-card summary::-webkit-details-marker { display: none; }
+    .checklist-preview {
+      margin-top: 6px;
+      color: #9ca3af;
+      font-size: 13px;
+    }
+    .checklist-items {
+      margin-top: 10px;
+      padding-left: 18px;
+      color: #d1d5db;
+    }
+    .checklist-items li { margin: 4px 0; }
+
   </style>
 </head>
 <body>
   <h1>🎯 Luisan & Teiny Task Board</h1>
   <div class="status" id="status">Loading...</div>
-  <div class="help" id="help">Click to select • ↑↓ reorder • ←→ move columns • T = Teiny • 1-5 = jump to column • Enter = edit • Esc = deselect</div>
-  
+  <div class="help" id="help">Click to select • ↑↓ reorder • ←→ move columns • T = Teiny • 1-7 = jump to column • Enter = edit • Esc = deselect</div>
+
+  <div class="board-tabs">
+    <button id="tab-board" class="board-tab active" onclick="switchTab('board')">Board</button>
+    <button id="tab-checklists" class="board-tab" onclick="switchTab('checklists')">Checklists</button>
+  </div>
+
+  <div class="tab-panel" id="panel-board">
   <div class="board">
     <div class="column today-col">
       <div class="column-header">
@@ -147,6 +206,15 @@
       <div class="cards" id="recurrente-cards"></div>
       <button class="add-btn" onclick="openModal('recurrente')">+ Add task</button>
     </div>
+    <div class="column recurrente-accounting-col">
+      <div class="column-header">
+        <span class="emoji">🧾</span>
+        <h2>Recurrente Accounting</h2>
+        <span class="count" id="recurrenteAccounting-count">0</span>
+      </div>
+      <div class="cards" id="recurrenteAccounting-cards"></div>
+      <button class="add-btn" onclick="openModal('recurrenteAccounting')">+ Add task</button>
+    </div>
     <div class="column puentesat-col">
       <div class="column-header">
         <span class="emoji">💜</span>
@@ -174,6 +242,16 @@
       <div class="cards" id="personal-cards"></div>
       <button class="add-btn" onclick="openModal('personal')">+ Add task</button>
     </div>
+  </div>
+  </div>
+
+  <div class="tab-panel" id="panel-checklists" style="display:none;">
+    <div id="checklists-grid" class="checklist-grid"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-checklist-detail" style="display:none;">
+    <button class="add-btn" style="max-width: 180px; margin-top:0;" onclick="closeChecklistDetail()">← Back to checklists</button>
+    <div id="checklist-detail" class="checklist-card" style="margin-top:12px;"></div>
   </div>
 
   <div class="modal" id="modal">
@@ -204,6 +282,7 @@
         <button onclick="moveTo('today')">📌 Today</button>
         <button onclick="moveTo('teiny')">🧠 Teiny</button>
         <button onclick="moveTo('recurrente')">🔥 Recurrente</button>
+        <button onclick="moveTo('recurrenteAccounting')">🧾 Recurrente Accounting</button>
         <button onclick="moveTo('puentesat')">💜 PuenteSat</button>
         <button onclick="moveTo('tributax')">📊 Tributax</button>
         <button onclick="moveTo('personal')">🏠 Personal</button>
@@ -215,7 +294,7 @@
   </div>
 
 <script>
-const COLUMNS = ['today', 'teiny', 'recurrente', 'puentesat', 'tributax', 'personal'];
+const COLUMNS = ['today', 'teiny', 'recurrente', 'recurrenteAccounting', 'puentesat', 'tributax', 'personal'];
 let data = {};
 COLUMNS.forEach(c => data[c] = []);
 
@@ -254,6 +333,121 @@ function status(msg, cls = '') {
   const el = document.getElementById('status');
   el.textContent = msg + ' • ' + new Date().toLocaleTimeString();
   el.className = 'status ' + cls;
+}
+
+// === Tabs + Checklists ===
+let currentTab = 'board';
+let checklistCards = [];
+let checklistById = {};
+
+function switchTab(tab) {
+  currentTab = tab;
+  const isBoard = tab === 'board';
+  const isChecklists = tab === 'checklists';
+  document.getElementById('tab-board').classList.toggle('active', isBoard);
+  document.getElementById('tab-checklists').classList.toggle('active', isChecklists);
+  document.getElementById('panel-board').style.display = isBoard ? 'block' : 'none';
+  document.getElementById('panel-checklists').style.display = isChecklists ? 'block' : 'none';
+  document.getElementById('panel-checklist-detail').style.display = 'none';
+  if (isChecklists && checklistCards.length === 0) loadChecklists();
+}
+
+async function loadChecklists() {
+  try {
+    const res = await fetch('/checklists');
+    const payload = await res.json();
+    if (!payload.ok) throw new Error(payload.error || 'Failed to load checklists');
+    checklistCards = parseChecklistMarkdown(payload.markdown || '');
+    checklistById = Object.fromEntries(checklistCards.map(c => [c.id, c]));
+    renderChecklistGrid();
+  } catch (err) {
+    document.getElementById('checklists-grid').innerHTML = `<div class="checklist-card">Couldn't load checklists: ${esc(err.message)}</div>`;
+  }
+}
+
+function parseChecklistMarkdown(md) {
+  const lines = md.split('\n');
+  const out = [];
+  let groupTitle = 'General';
+  let current = null;
+
+  const pushCurrent = () => {
+    if (!current) return;
+    current.description = current.description || groupTitle;
+    current.firstItem = current.items[0] || '';
+    out.push(current);
+    current = null;
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    if (line.startsWith('## ')) {
+      pushCurrent();
+      groupTitle = line.slice(3).trim();
+      continue;
+    }
+
+    if (line.startsWith('### ')) {
+      pushCurrent();
+      const title = line.slice(4).trim();
+      const id = `${groupTitle}__${title}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      current = { id, title, group: groupTitle, description: '', items: [], firstItem: '' };
+      continue;
+    }
+
+    if (!current) continue;
+    if (!line || line === '---') continue;
+
+    if (line.startsWith('- [ ] ')) {
+      current.items.push(line.slice(6).trim());
+    } else if (line.startsWith('- ')) {
+      current.items.push(line.slice(2).trim());
+    } else if (!line.startsWith('#') && !current.description) {
+      current.description = line;
+    }
+  }
+
+  pushCurrent();
+  return out;
+}
+
+function renderChecklistGrid() {
+  const grid = document.getElementById('checklists-grid');
+  if (!checklistCards.length) {
+    grid.innerHTML = '<div class="checklist-card">No checklist cards found.</div>';
+    return;
+  }
+
+  grid.innerHTML = checklistCards.map(card => `
+    <button class="checklist-card" style="text-align:left; cursor:pointer;" onclick="openChecklistDetail('${card.id}')">
+      <div style="font-size:11px; color:#93c5fd; margin-bottom:4px;">${esc(card.group)}</div>
+      <div style="font-weight:700; color:#e5e7eb;">${esc(card.title)}</div>
+      <div class="checklist-preview">${esc(card.description || 'No description')}</div>
+      <div class="checklist-preview" style="margin-top:8px; color:#cbd5e1;"><strong>First item:</strong> ${esc(card.firstItem || 'No items yet')}</div>
+    </button>
+  `).join('');
+}
+
+function openChecklistDetail(id) {
+  const card = checklistById[id];
+  if (!card) return;
+  document.getElementById('panel-checklists').style.display = 'none';
+  document.getElementById('panel-checklist-detail').style.display = 'block';
+  document.getElementById('checklist-detail').innerHTML = `
+    <div style="font-size:12px; color:#93c5fd; margin-bottom:6px;">${esc(card.group)}</div>
+    <h3 style="margin-bottom:8px;">${esc(card.title)}</h3>
+    ${card.description ? `<div class="checklist-preview" style="margin-bottom:10px;">${esc(card.description)}</div>` : ''}
+    <ul class="checklist-items">
+      ${card.items.map(item => `<li>${esc(item)}</li>`).join('') || '<li>No items yet.</li>'}
+    </ul>
+  `;
+}
+
+function closeChecklistDetail() {
+  if (currentTab !== 'checklists') return;
+  document.getElementById('panel-checklist-detail').style.display = 'none';
+  document.getElementById('panel-checklists').style.display = 'block';
 }
 
 // === Render ===
@@ -481,6 +675,7 @@ document.addEventListener('keydown', e => {
   if (document.getElementById('modal').classList.contains('active')) return;
   if (document.getElementById('move-modal').classList.contains('active')) return;
   if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+  if (currentTab !== 'board') return;
   
   // Keyboard navigation for selected card
   if (selCol !== null) {
@@ -498,10 +693,10 @@ document.addEventListener('keydown', e => {
         save();
       }
     }
-    // Quick column jumps: 1=Recurrente, 2=PuenteSat, 3=Tributax, 4=Personal, 5=Teiny
-    if (e.key >= '1' && e.key <= '5') {
+    // Quick column jumps follow COLUMNS order
+    if (e.key >= '1' && e.key <= String(COLUMNS.length)) {
       e.preventDefault();
-      moveSelectedToColumn(COLUMNS[parseInt(e.key) - 1]);
+      moveSelectedToColumn(COLUMNS[parseInt(e.key, 10) - 1]);
     }
   }
 });

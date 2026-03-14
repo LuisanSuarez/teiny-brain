@@ -14,6 +14,8 @@ Before doing anything else:
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+5. Treat checklists as first-class operating context; check `docs/workflows/checklists.md` when planning/execution topics come up.
+6. For CLI deploy/auth/setup work, follow `docs/runbooks/cli-noninteractive-playbook.md` to avoid interactive prompt stalls.
 
 Don't ask permission. Just do it.
 
@@ -245,6 +247,26 @@ Update both indexes immediately when:
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## Persistent Rule Capture (mandatory)
+
+When Luisan uses phrases like:
+- "from now on"
+- "every time"
+- "always"
+- "remember this"
+- "new rule"
+- "change your workflow"
+
+Do **not** leave it only in chat history.
+
+You must:
+1. Write/update the relevant operating file (`AGENTS.md`, `TOOLS.md`, `docs/workflows/checklists.md`, or a runbook under `docs/runbooks/`)
+2. Add/update index entries in `docs/FILE_INDEX.md` and `docs/file-index.json` when a new recurring file is created
+3. Add a concise long-term note in `MEMORY.md` if it reflects a recurring preference/pattern
+4. Confirm back to Luisan exactly where it was persisted
+
+If intentionally keeping something only in chat history, explicitly say that and why.
 
 ## Config Safety (Teiny)
 

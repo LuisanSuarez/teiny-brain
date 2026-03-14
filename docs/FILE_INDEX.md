@@ -14,6 +14,7 @@ Purpose: fast lookup of important files/configs so we don’t start with broad g
 ## Skills / Workflows
 - Tao review skill: `/Users/luisan/.openclaw/workspace/skills/tao-review/SKILL.md`
 - Claude review+confidence copy (workspace): `/Users/luisan/.openclaw/workspace/docs/prompts/claude-review-confidence.md`
+- Personal checklists (daily + Recurrente discovery): `/Users/luisan/.openclaw/workspace/docs/workflows/checklists.md`
 - Skill catalog root: `/usr/local/lib/node_modules/openclaw/skills/`
 
 ## Active Project Roots
@@ -35,3 +36,10 @@ Purpose: fast lookup of important files/configs so we don’t start with broad g
 
 ## Update Rule
 When we create or discover a recurring source-of-truth file, add it here immediately.
+
+## Control Center
+- Taskboard control center runbook: `/Users/luisan/.openclaw/workspace/docs/runbooks/taskboard-control-center.md`
+- Kanban board app: `/Users/luisan/.openclaw/workspace/projects/kanban/app.html`
+- Kanban board data: `/Users/luisan/.openclaw/workspace/projects/kanban/data.json`
+- Kanban Convex migration plan: `/Users/luisan/.openclaw/workspace/projects/kanban/CONVEX_WEB_MIGRATION_PLAN.md`
+- CLI non-interactive playbook: `/Users/luisan/.openclaw/workspace/docs/runbooks/cli-noninteractive-playbook.md`

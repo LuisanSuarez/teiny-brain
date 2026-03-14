@@ -1,13 +1,16 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-02T10:26:00-06:00",
+  "updatedAt": "2026-03-12T19:40:00-06:00",
   "entries": [
     {
       "key": "workspace guide",
       "path": "/Users/luisan/.openclaw/workspace/AGENTS.md",
       "type": "config",
       "notes": "Main operating rules for Teiny in this workspace.",
-      "aliases": ["agents", "workspace rules"],
+      "aliases": [
+        "agents",
+        "workspace rules"
+      ],
       "lastVerified": "2026-03-02T10:24:00-06:00"
     },
     {
@@ -15,7 +18,11 @@
       "path": "/Users/luisan/.claude/CLAUDE.md",
       "type": "config",
       "notes": "Canonical Claude coding/review workflow instructions.",
-      "aliases": ["claude md", "ship confidence prompt", "tao workflow prompt"],
+      "aliases": [
+        "claude md",
+        "ship confidence prompt",
+        "tao workflow prompt"
+      ],
       "lastVerified": "2026-03-02T10:24:00-06:00"
     },
     {
@@ -23,7 +30,11 @@
       "path": "/Users/luisan/.openclaw/workspace/docs/prompts/claude-review-confidence.md",
       "type": "prompt",
       "notes": "Workspace copy of canonical Claude review + ship confidence prompt sections.",
-      "aliases": ["review confidence prompt", "ship confidence prompt copy", "tao review prompt copy"],
+      "aliases": [
+        "review confidence prompt",
+        "ship confidence prompt copy",
+        "tao review prompt copy"
+      ],
       "lastVerified": "2026-03-02T10:26:00-06:00"
     },
     {
@@ -31,7 +42,10 @@
       "path": "/Users/luisan/.openclaw/workspace/docs/FILE_INDEX.md",
       "type": "workflow",
       "notes": "Human-readable fast lookup index.",
-      "aliases": ["index", "file map"],
+      "aliases": [
+        "index",
+        "file map"
+      ],
       "lastVerified": "2026-03-02T10:24:00-06:00"
     },
     {
@@ -39,7 +53,9 @@
       "path": "/Users/luisan/.openclaw/workspace/docs/file-index.json",
       "type": "workflow",
       "notes": "Machine-readable file lookup index.",
-      "aliases": ["json index"],
+      "aliases": [
+        "json index"
+      ],
       "lastVerified": "2026-03-02T10:24:00-06:00"
     },
     {
@@ -47,8 +63,79 @@
       "path": "/Users/luisan/.openclaw/workspace/skills/tao-review/SKILL.md",
       "type": "workflow",
       "notes": "Skill instructions for Tao review process.",
-      "aliases": ["tao skill", "review skill"],
+      "aliases": [
+        "tao skill",
+        "review skill"
+      ],
       "lastVerified": "2026-03-02T10:24:00-06:00"
+    },
+    {
+      "key": "personal checklists",
+      "path": "/Users/luisan/.openclaw/workspace/docs/workflows/checklists.md",
+      "type": "workflow",
+      "notes": "Daily operating checklists plus Recurrente pricing/discovery checklist and captured questions.",
+      "aliases": [
+        "daily checklist",
+        "recurrente checklist",
+        "pricing discovery checklist"
+      ],
+      "lastVerified": "2026-03-12T19:20:00-06:00"
+    },
+    {
+      "key": "taskboard control center",
+      "path": "/Users/luisan/.openclaw/workspace/docs/runbooks/taskboard-control-center.md",
+      "type": "runbook",
+      "notes": "Canonical location and structure for the shared taskboard control center.",
+      "aliases": [
+        "control center",
+        "workstation board",
+        "kanban control center"
+      ],
+      "lastVerified": "2026-03-12T19:40:00-06:00"
+    },
+    {
+      "key": "kanban taskboard app",
+      "path": "/Users/luisan/.openclaw/workspace/projects/kanban/app.html",
+      "type": "workflow",
+      "notes": "UI for shared work tasks + checklist tab.",
+      "aliases": [
+        "taskboard ui",
+        "kanban app"
+      ],
+      "lastVerified": "2026-03-12T19:40:00-06:00"
+    },
+    {
+      "key": "kanban taskboard data",
+      "path": "/Users/luisan/.openclaw/workspace/projects/kanban/data.json",
+      "type": "config",
+      "notes": "Persistent board task data store.",
+      "aliases": [
+        "taskboard data",
+        "kanban data"
+      ],
+      "lastVerified": "2026-03-12T19:40:00-06:00"
+    },
+    {
+      "key": "kanban convex migration plan",
+      "path": "/Users/luisan/.openclaw/workspace/projects/kanban/CONVEX_WEB_MIGRATION_PLAN.md",
+      "type": "runbook",
+      "notes": "Detailed migration plan for moving taskboard to Convex + Vercel while preserving current features.",
+      "aliases": [
+        "convex taskboard plan",
+        "taskboard migration plan"
+      ],
+      "lastVerified": "2026-03-13T06:52:00-06:00"
+    },
+    {
+      "key": "cli non-interactive playbook",
+      "path": "/Users/luisan/.openclaw/workspace/docs/runbooks/cli-noninteractive-playbook.md",
+      "type": "runbook",
+      "notes": "Checklist to prevent getting stuck on interactive CLI prompts during auth/deploy/setup.",
+      "aliases": [
+        "cli prompt stall playbook",
+        "non-interactive cli checklist"
+      ],
+      "lastVerified": "2026-03-13T10:51:00-06:00"
     }
   ]
 }

@@ -89,3 +89,8 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+### Taskboard (Control Center)
+- Canonical board: `/Users/luisan/.openclaw/workspace/projects/kanban`
+- Local URL when running: `http://127.0.0.1:8765`
+- Rule: this board is the default workstation for shared tasks (Luisan + Teiny) and operational visibility.

@@ -4,7 +4,7 @@
 - **What to call them:** Luisan
 - **Pronouns:** *(TBD)*
 - **Timezone:** America/Guatemala (CST)
-- **Notes:** Prefers chill, casual communication. Wants straight talk, no BS.
+- **Notes:** Prefers chill, casual communication. Wants straight talk, no BS. Checklist-first operator: likes core workflows captured as reusable checklists and brought into conversations proactively.
 
 ## Work & Projects
 

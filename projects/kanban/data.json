@@ -1,11 +1,6 @@
 {
   "today": [
     {
-      "title": "InFile facturación - finish with Max",
-      "desc": "Review improvements",
-      "priority": "high"
-    },
-    {
       "title": "placeholder",
       "desc": "avoid losing a column",
       "priority": "low"
@@ -13,8 +8,33 @@
   ],
   "teiny": [
     {
-      "title": "Old PRs - Sandi Metz review",
-      "desc": "Backlog of PRs that need to go through reviewer",
+      "title": "Daily checklist grill reminder loop",
+      "desc": "Ask Luisan at least once daily: did we turn today's mistakes/frustrations/lessons into a checklist entry? If not, pause and capture it.",
+      "priority": "high"
+    },
+    {
+      "title": "Publish task board as phone-friendly web app (password protected)",
+      "desc": "Keep it simple: deploy public URL + auth gate (or no-password first pass if approved). Convex + web-first migration spec: projects/kanban/CONVEX_WEB_MIGRATION_PLAN.md",
+      "priority": "high"
+    },
+    {
+      "title": "Add task aging badge + stale-task escalation loop",
+      "desc": "Show red badge with days since last touched on each task card. If >21 days, show warning and proactively bring it up in conversation so we decide: restart+reassign, do today, or scrap.",
+      "priority": "high"
+    },
+    {
+      "title": "iOS app install workflow + Task Board wrapper app",
+      "desc": "Design a permission-based flow to install iOS apps for approved users (primarily Luisan). Explore simple React Native shell with WebView for Task Board so it feels native without using browser directly. Planning/spec only for now.",
+      "priority": "medium"
+    },
+    {
+      "title": "Feasibility: AI grocery ordering + WhatsApp vendor auto-replies",
+      "desc": "Explore two flows: (a) voice-note grocery capture during week -> weekend order automation; (b) reply handling for WhatsApp vendor chats (e.g., Walmart) based on saved preferences and approval boundaries. Discovery/spec only for now.",
+      "priority": "medium"
+    },
+    {
+      "title": "Quick throwaway checklists feature",
+      "desc": "Add a lightweight way to create temporary/throwaway checklists fast without cluttering main checklist library. Planning only for now.",
       "priority": "medium"
     },
     {
@@ -23,40 +43,25 @@
       "priority": "medium"
     },
     {
-      "title": "Research: Stripe/Adyen/Square chargebacks",
-      "desc": "How do they handle chargebacks?",
-      "priority": "medium"
-    },
-    {
       "title": "Chargeback states PR",
       "desc": "Update won/lost states + save to database",
       "priority": "medium"
-    },
-    {
-      "title": "Research: Stripe/Adyen/Square sales incentives",
-      "desc": "How do they structure sales incentives?",
-      "priority": "high"
     }
   ],
   "recurrente": [
+    {
+      "title": "InFile facturación - finish with Max",
+      "desc": "Review improvements",
+      "priority": "high"
+    },
     {
       "title": "AI Withdrawal Reviewer rules",
       "desc": "add a rule to the ai withdrawal reviewer that checks if there are payments back and forth (a paid b, b paid a)",
       "priority": "medium"
     },
     {
-      "title": "Fix verification bug (double charges)",
-      "desc": "Payment shows stuck but gets processed → clients charge twice",
-      "priority": "high"
-    },
-    {
       "title": "Find unnotified chargebacks to fight",
       "desc": "Identify chargebacks we were not notified of but should contest",
-      "priority": "medium"
-    },
-    {
-      "title": "Sex shop merchant - restrict card payments?",
-      "desc": "May need to restrict to avoid fines. <a href='https://app.recurrente.com/a/ac_rkizvyy3' target='_blank'>View merchant</a>",
       "priority": "medium"
     },
     {
@@ -65,46 +70,78 @@
       "priority": "low"
     },
     {
-      "title": "Internal audit - bank statements",
-      "desc": "Getting estados de cuenta for internal audit",
-      "priority": "medium"
-    },
-    {
-      "title": "Talk to big customers with Jan chargebacks (churning)",
-      "desc": "Identify big customers who had chargebacks in January and are now churning. Come up with a plan before reaching out — what's the goal? Retention? Understanding? Win-back offer?",
-      "priority": "high"
-    },
-    {
       "title": "Investigar y arreglar retiros aprobados no liquidados",
       "desc": "Entrarle a investigar y arreglar de raíz los retiros aprobados que no se suben a la liquidación.",
       "priority": "high"
-    },
+    }
+  ],
+  "recurrenteAccounting": [
     {
-      "title": "Escalar casos activos de retiros a Max",
-      "desc": "Cuando tenga casos activos, pasárselos a Max con contexto completo para que un agent revise y proponga fix.",
-      "priority": "medium"
-    },
-    {
-      "title": "Investigar descuadre de retenciones + documentar",
-      "desc": "Revisar qué causó el descuadre reciente de retenciones y documentarlo en Basecamp.",
+      "title": "Automate profit calculation engine",
+      "desc": "Compute per-transaction profit + fixed fees + merchant special pricing overrides from transaction-level charged amounts.",
       "priority": "high"
     },
     {
-      "title": "Programar 3 correos de contracargos",
-      "desc": "Programar 3 correos de contracargos: uno temprano, uno intermedio, uno 1 día antes del límite.",
+      "title": "Migrate money fields to NUMERIC + ETH-ready precision",
+      "desc": "Move to numeric decimals (no float math), keep precision safe for fiat + future ETH support.",
+      "priority": "high"
+    },
+    {
+      "title": "Create balance_adjustments model + DB table",
+      "desc": "Manual adjustment class with amount, reason/subreason, note, actor, timestamp, and reference id. Include in monthly revenue bucket as Others.",
+      "priority": "high"
+    },
+    {
+      "title": "Implement chargeback dual-date model",
+      "desc": "Track both recognition date and cash deduction date to separate accounting reality vs settlement timing reality.",
+      "priority": "high"
+    },
+    {
+      "title": "Build chargeback deduction payable reconciliation",
+      "desc": "Recognized-not-deducted chargebacks go to payable; clear payable when monthly settlement deduction arrives; auto-match and flag exceptions.",
+      "priority": "high"
+    },
+    {
+      "title": "Automate AP report",
+      "desc": "Current scope decision: all withdrawable balances + pending withdrawals owed + chargeback_payables",
       "priority": "medium"
+    },
+    {
+      "title": "Automate AR report",
+      "desc": "Current scope decision: negative balances only (includes merchant debts + unpaid fees for now).",
+      "priority": "medium"
+    },
+    {
+      "title": "Automate cash flow report (incl. crypto rails)",
+      "desc": "Include swaps (buy/sell stable), stable checkout payments, and US-to-Recurrente balance sell flows.",
+      "priority": "medium"
+    },
+    {
+      "title": "Automate bridge wallet amount extraction",
+      "desc": "Pull bridge wallet amounts from existing sheet/source and include in reporting package.",
+      "priority": "medium"
+    },
+    {
+      "title": "Monthly close policy implementation",
+      "desc": "Decision locked: cutoff at 23:59:59 Guatemala on last day of month. Enforce in reports/snapshots.",
+      "priority": "medium"
+    },
+    {
+      "title": "Open question: late chargeback entry after month close",
+      "desc": "Choose policy: (A) backdate with audit-flag + lock controls, or (B) no backdate and roll forward with adjustment note.",
+      "priority": "low"
+    },
+    {
+      "title": "Open question: external chargeback granularity",
+      "desc": "Current decision: keep external simple as net receivable + recoveries. Revisit if statements require reason-level categories.",
+      "priority": "low"
     }
   ],
   "puentesat": [
     {
-      "title": "Hook up sales invoice upload",
-      "desc": "Main feature expansion — currently only bills, need to add sales invoices",
+      "title": "Figure out special taxes (gas, tourism)",
+      "desc": "Edge cases for parser.\n\n**Important:** satTaxKey format differs between XLS and XML. When adding new tax types, check how taxes are structured in XLS — different format than XML. Must handle both.",
       "priority": "high"
-    },
-    {
-      "title": "Speed up backend processing",
-      "desc": "Invoice upload processing is way too slow — both XML and XLS. Need to optimize.",
-      "priority": "medium"
     },
     {
       "title": "Fix PDF attachment polling architecture",
@@ -112,60 +149,25 @@
       "priority": "medium"
     },
     {
-      "title": "Multi-currency support (GTQ/USD)",
-      "desc": "Support both GTQ and USD currencies",
-      "priority": "medium"
-    },
-    {
-      "title": "Drag and drop column re-order",
-      "desc": "read title",
-      "priority": "low"
-    },
-    {
       "title": "Detect void invoices",
       "desc": "Currently not detecting void invoices — uploading as regular.\n\nShould:\n- Detect void status\n- Show in red\n- Block from upload by default\n- Option to remove OR force upload with $0 amounts (some want the PDF attached)",
       "priority": "medium"
     },
     {
-      "title": "Figure out special taxes (gas, tourism)",
-      "desc": "Edge cases for parser.\n\n**Important:** satTaxKey format differs between XLS and XML. When adding new tax types, check how taxes are structured in XLS — different format than XML. Must handle both.",
-      "priority": "medium"
-    },
-    {
-      "title": "Viáticos / Employee expense uploads",
-      "desc": "Section for employee expenses (viáticos). Upload all invoices per employee as a single QuickBooks upload. Excel sheet lets them choose which columns to concatenate.\n\n**Note:** UI naming TBD — might not call it 'employee'. Backend is straightforward.\n\n📹 Meeting recorded — screenshots + video available for reference.",
-      "priority": "high"
-    },
-    {
       "title": "Change organization name from settings",
       "desc": "Let users change their organization name from the settings page.",
-      "priority": "medium"
+      "priority": "low"
+    },
+    {
+      "title": "Drag and drop column re-order",
+      "desc": "read title",
+      "priority": "low"
     }
   ],
   "tributax": [
     {
-      "title": "Big codebase refactor",
-      "desc": "Major architecture refactor in progress. Opus is handling it — large codebase.\n\n**Status:** In progress (Feb 2026)",
-      "priority": "high"
-    },
-    {
       "title": "Fix payment link (after refactor)",
       "desc": "Payment link fix didn't work. Fix once refactor is done.\n\n**Context:** Shipped fix Feb 6, verified Feb 8 — not working. Manual charge needed in meantime.",
-      "priority": "high"
-    },
-    {
-      "title": "Fix bank transfer links (after refactor)",
-      "desc": "Fix bank transfer links once refactor wraps up.",
-      "priority": "high"
-    },
-    {
-      "title": "Fix legacy plan on users column",
-      "desc": "",
-      "priority": "high"
-    },
-    {
-      "title": "Standardize pricing: 25/75/200 Q",
-      "desc": "Simplify pricing tiers for all clients",
       "priority": "high"
     },
     {
@@ -180,11 +182,6 @@
     }
   ],
   "personal": [
-    {
-      "title": "Comprar bañera para Simón (grande vs pequeña)",
-      "desc": "Encontré una bañera grande para Simón. Duda: evitar estar agachado; considerar una más pequeña.",
-      "priority": "medium"
-    },
     {
       "title": "Get Guatemalan passport",
       "desc": "",
@@ -211,79 +208,9 @@
       "priority": "high"
     },
     {
-      "title": "Fix RO water filter leak",
-      "desc": "Need to find someone to repair",
-      "priority": "medium"
-    },
-    {
       "title": "Hang out with Juanpi",
       "desc": "See his new apartment",
       "priority": "medium"
-    },
-    {
-      "title": "Dedicate wall staring time",
-      "desc": "Maybe while putting Simon down?",
-      "priority": "medium"
-    },
-    {
-      "title": "Buy office chairs",
-      "desc": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Ask Valeria about Rocky",
-      "desc": "She offered to help with adoption",
-      "priority": "medium"
-    },
-    {
-      "title": "Get remote controls for lights",
-      "desc": "Smart plugs/switches",
-      "priority": "low"
-    },
-    {
-      "title": "Buy white noise machine",
-      "desc": "",
-      "priority": "low"
-    },
-    {
-      "title": "Clean up drawer / throw stuff away",
-      "desc": "Declutter",
-      "priority": "low"
-    },
-    {
-      "title": "Get velcro for curtains",
-      "desc": "Keep them shut",
-      "priority": "low"
-    }
-  ],
-  "done": [
-    {
-      "title": "Buy queen mattress",
-      "desc": "lunch: 2pm. \nyou can use credit on the card to start paying it",
-      "priority": "medium",
-      "completedAt": "2026-02-11T17:41:51.429Z",
-      "fromColumn": "today"
-    },
-    {
-      "title": "Retroactive Inviter + Invitee",
-      "desc": "Finish writing the PR, testing and sending\n1. we need to hide the \"add inviter\" from the UI users see and move it to admin only\n2. i think there's a logic bug when checking if we can re-add the reward\n3. triple-check that the way we add it will be re-counted on Profit.rb\n\n**Status:** Almost finished PR (Feb 5)",
-      "priority": "high",
-      "completedAt": "2026-02-11T17:41:48.390Z",
-      "fromColumn": "today"
-    },
-    {
-      "title": "cron &/or manual fail crypto swaps",
-      "desc": "Diego Rivera still needs failing",
-      "priority": "high",
-      "completedAt": "2026-02-10T21:50:16.372Z",
-      "fromColumn": "today"
-    },
-    {
-      "title": "placeholder",
-      "desc": "",
-      "priority": "medium",
-      "completedAt": "2026-02-10T14:06:25.336Z",
-      "fromColumn": "today"
     }
   ]
 }

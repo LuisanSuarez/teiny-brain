@@ -5,6 +5,7 @@ const path = require('path');
 const PORT = 8765;
 const DATA_FILE = path.join(__dirname, 'data.json');
 const HTML_FILE = path.join(__dirname, 'app.html');
+const CHECKLIST_FILE = path.join(__dirname, '..', '..', 'docs', 'workflows', 'checklists.md');
 
 // Initialize data file if missing
 if (!fs.existsSync(DATA_FILE)) {
@@ -34,6 +35,19 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/data') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(fs.readFileSync(DATA_FILE));
+    return;
+  }
+
+  // GET /checklists - return markdown checklist source
+  if (req.method === 'GET' && req.url === '/checklists') {
+    try {
+      const md = fs.readFileSync(CHECKLIST_FILE, 'utf8');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, markdown: md }));
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: false, error: e.message }));
+    }
     return;
   }
 
