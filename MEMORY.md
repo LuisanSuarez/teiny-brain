@@ -69,6 +69,7 @@
 - Treat the taskboard as the default main task force/execution hub.
 - Taskboard repo/location on disk: `/Users/luisan/Trabajo/taskboard`.
 - **Recurring reliability issue:** avoid getting stuck on interactive CLI prompts. Use `/Users/luisan/.openclaw/workspace/docs/runbooks/cli-noninteractive-playbook.md` for deploy/auth/setup CLI flows.
+- **Hard workflow rule (2026-03-17):** for Taskboard operations, never use browser automation; always execute via CLI/terminal commands.
 
 ---
 

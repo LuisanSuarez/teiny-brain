@@ -10,6 +10,10 @@ Always ask Luisan before installing anything — Homebrew, npm, pip, curl, etc. 
 ### Browser
 Use **Brave**, not Chrome. Brave is the default browser with all cookies/sessions.
 
+### Taskboard access mode
+- **Never** use browser automation to read/update Taskboard.
+- **Always** use CLI/terminal commands for Taskboard work.
+
 ### Basecamp Posting
 When posting to Basecamp:
 - **Default:** Save as draft OR publish with only Luisan notified

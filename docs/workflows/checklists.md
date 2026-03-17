@@ -185,3 +185,13 @@ Template per feature:
 - [ ] Go pee
 - [ ] Take creatine
 
+### Prospera study sprint (night block, 60–90 min)
+- [ ] Re-read existing deep research notes (20 min max, skim/highlight only)
+- [ ] Write 1-page business-model summary:
+  - How Prospera makes money
+  - Who pays
+  - Growth flywheel
+  - Key constraints/regulatory dependencies
+- [ ] Write “what this means for me” (opportunities + risks)
+- [ ] Capture 3 follow-up questions for tomorrow
+
