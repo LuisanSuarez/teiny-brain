@@ -63,7 +63,11 @@
 - For coding while mobile/on-the-fly: default to **single-agent, milestone-only updates, no raw terminal log dumps**, and concise review output.
 - Wants proactive warnings when a workflow is likely to burn many tokens (e.g., parallel agents, frequent polling, verbose logs).
 - **Checklist-first workflow:** checklists are a core operating preference and should be surfaced proactively in planning/execution conversations.
+- **Weekly rhythm preference (Mar 2026):** reserve Wednesday afternoons for side projects + outreach (Tributax/PuenteSat), with Recurrente paused unless urgent.
 - Canonical checklist library: `/Users/luisan/.openclaw/workspace/docs/workflows/checklists.md`.
+- Taskboard source of truth is the online board: `https://taskboard-kappa.vercel.app/` (not local kanban files).
+- Treat the taskboard as the default main task force/execution hub.
+- Taskboard repo/location on disk: `/Users/luisan/Trabajo/taskboard`.
 - **Recurring reliability issue:** avoid getting stuck on interactive CLI prompts. Use `/Users/luisan/.openclaw/workspace/docs/runbooks/cli-noninteractive-playbook.md` for deploy/auth/setup CLI flows.
 
 ---
@@ -74,4 +78,4 @@
 
 ---
 
-- **2026-03-12:** Canonical workstation/control center is the taskboard at `/Users/luisan/.openclaw/workspace/projects/kanban` (local URL `http://127.0.0.1:8765`). Treat this as default execution hub.
+- **2026-03-12 (corrected 2026-03-16):** Canonical workstation/control center is the online taskboard `https://taskboard-kappa.vercel.app/`; git repo on disk is `/Users/luisan/Trabajo/taskboard`. Treat this as default execution hub.

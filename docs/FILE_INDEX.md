@@ -39,7 +39,9 @@ When we create or discover a recurring source-of-truth file, add it here immedia
 
 ## Control Center
 - Taskboard control center runbook: `/Users/luisan/.openclaw/workspace/docs/runbooks/taskboard-control-center.md`
-- Kanban board app: `/Users/luisan/.openclaw/workspace/projects/kanban/app.html`
-- Kanban board data: `/Users/luisan/.openclaw/workspace/projects/kanban/data.json`
-- Kanban Convex migration plan: `/Users/luisan/.openclaw/workspace/projects/kanban/CONVEX_WEB_MIGRATION_PLAN.md`
+- Kanban board app: `/Users/luisan/Trabajo/taskboard/app.html`
+- Kanban board data: `/Users/luisan/Trabajo/taskboard/data.json`
+- Kanban Convex migration plan: `/Users/luisan/Trabajo/taskboard/CONVEX_WEB_MIGRATION_PLAN.md`
 - CLI non-interactive playbook: `/Users/luisan/.openclaw/workspace/docs/runbooks/cli-noninteractive-playbook.md`
+- Prospera/Brunspit prep master dump: `/Users/luisan/.openclaw/workspace/docs/plans/prospera-brunspit-prep.md`
+- Luisan presentation pitch pack: `/Users/luisan/.openclaw/workspace/docs/plans/luisan-presentation-pitch.md`

@@ -139,6 +139,31 @@
   ],
   "puentesat": [
     {
+      "title": "Check Facebook Events Manager data quality",
+      "desc": "Reminder task: verify whether events are being sent properly in Meta Events Manager. URL: https://eventsmanager.facebook.com/events_manager2/list/dataset/633373188429796/overview?business_id=391185952424087&global_scope_id=391185952424087&nav_source=scope",
+      "priority": "high"
+    },
+    {
+      "title": "Improve Emisor UI",
+      "desc": "Polish UX/UI for Emisor after initial launch.",
+      "priority": "medium"
+    },
+    {
+      "title": "Build one-time invoice issuance form",
+      "desc": "Create a one-time (single-use) form flow for invoice issuance in Emisor.",
+      "priority": "medium"
+    },
+    {
+      "title": "Message Sergio Gomez first thing tomorrow",
+      "desc": "Tomorrow first step: send Sergio Gomez a message.",
+      "priority": "high"
+    },
+    {
+      "title": "Bugfix bundled invoice sending",
+      "desc": "Investigate and fix bundled invoice sending flow end-to-end (creation/send path + validation + retries if applicable).",
+      "priority": "high"
+    },
+    {
       "title": "Figure out special taxes (gas, tourism)",
       "desc": "Edge cases for parser.\n\n**Important:** satTaxKey format differs between XLS and XML. When adding new tax types, check how taxes are structured in XLS — different format than XML. Must handle both.",
       "priority": "high"
@@ -182,6 +207,11 @@
     }
   ],
   "personal": [
+    {
+      "title": "Take USDC out and pay credit card",
+      "desc": "Reminder: withdraw/move USDC so funds are ready, then send payment for the credit card.",
+      "priority": "high"
+    },
     {
       "title": "Get Guatemalan passport",
       "desc": "",

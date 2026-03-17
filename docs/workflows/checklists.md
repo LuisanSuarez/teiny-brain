@@ -36,12 +36,19 @@ Rule: completed before 9:00 AM, no exceptions.
 - Timebox block (45–60 min)
 - Close distractions
 - Start with hardest item first
+- Single-threading check: if juggling admin/travel + product/work tasks, pick one lane first and park the other in a quick list to avoid overwhelm
 
 ### End of day shutdown (5 min)
 - Log what got shipped
 - Write first step for tomorrow
 - Capture loose ends/questions
 - Decide if anything is urgent for morning
+
+### Wednesday side-project outreach block (afternoon)
+- [ ] Protect Wednesday afternoon from Recurrente work (unless true emergency)
+- [ ] Spend block on side projects (Tributax/PuenteSat) + outreach
+- [ ] Message at least one lead/contact (starting with Elda Pas)
+- [ ] Log outcomes and next follow-ups before ending the block
 
 ---
 

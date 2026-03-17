@@ -91,6 +91,8 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 Add whatever helps you do your job. This is your cheat sheet.
 
 ### Taskboard (Control Center)
-- Canonical board: `/Users/luisan/.openclaw/workspace/projects/kanban`
-- Local URL when running: `http://127.0.0.1:8765`
-- Rule: this board is the default workstation for shared tasks (Luisan + Teiny) and operational visibility.
+- Canonical board URL (source of truth): `https://taskboard-kappa.vercel.app/`
+- Rule: this online board is the **only** place to read/write tasks.
+- Treat this board as the **main task force / execution hub** by default.
+- Local taskboard repo lives at `/Users/luisan/Trabajo/taskboard` (code/deploy source).
+- Taskboard repo/location on disk: `/Users/luisan/Trabajo/taskboard`
