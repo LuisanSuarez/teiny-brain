@@ -63,6 +63,7 @@
 - For coding while mobile/on-the-fly: default to **single-agent, milestone-only updates, no raw terminal log dumps**, and concise review output.
 - Wants proactive warnings when a workflow is likely to burn many tokens (e.g., parallel agents, frequent polling, verbose logs).
 - **Checklist-first workflow:** checklists are a core operating preference and should be surfaced proactively in planning/execution conversations.
+- **Low-bandwidth mode preference (2026-03-18):** keep a dedicated “light work” task lane for low-focus moments (small admin/follow-up wins like inbox cleanup and intro requests).
 - **Weekly rhythm preference (Mar 2026):** reserve Wednesday afternoons for side projects + outreach (Tributax/PuenteSat), with Recurrente paused unless urgent.
 - Canonical checklist library: `/Users/luisan/.openclaw/workspace/docs/workflows/checklists.md`.
 - Taskboard source of truth is the online board: `https://taskboard-kappa.vercel.app/` (not local kanban files).
@@ -70,6 +71,8 @@
 - Taskboard repo/location on disk: `/Users/luisan/Trabajo/taskboard`.
 - **Recurring reliability issue:** avoid getting stuck on interactive CLI prompts. Use `/Users/luisan/.openclaw/workspace/docs/runbooks/cli-noninteractive-playbook.md` for deploy/auth/setup CLI flows.
 - **Hard workflow rule (2026-03-17):** for Taskboard operations, never use browser automation; always execute via CLI/terminal commands.
+- **Taskboard source rule (2026-03-18):** always operate against the live Convex/Vercel board; do not use local JSON mirrors for reads/writes.
+- **Terminology preference (2026-03-19):** "quick checklist" / "quick throwaway checklist" means the Quick Throwaway Checklist module in the live Taskboard Convex app by default.
 
 ---
 

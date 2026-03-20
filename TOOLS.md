@@ -13,6 +13,7 @@ Use **Brave**, not Chrome. Brave is the default browser with all cookies/session
 ### Taskboard access mode
 - **Never** use browser automation to read/update Taskboard.
 - **Always** use CLI/terminal commands for Taskboard work.
+- **Always use live Convex board data as source of truth** (never local JSON mirrors).
 
 ### Basecamp Posting
 When posting to Basecamp:
@@ -100,3 +101,4 @@ Add whatever helps you do your job. This is your cheat sheet.
 - Treat this board as the **main task force / execution hub** by default.
 - Local taskboard repo lives at `/Users/luisan/Trabajo/taskboard` (code/deploy source).
 - Taskboard repo/location on disk: `/Users/luisan/Trabajo/taskboard`
+- **Terminology rule (2026-03-19):** when Luisan says "quick checklist" or "quick throwaway checklist," it means the **Quick Throwaway Checklist module on the Taskboard Convex app** (not a local markdown checklist by default).

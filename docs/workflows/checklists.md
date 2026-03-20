@@ -44,6 +44,13 @@ Rule: completed before 9:00 AM, no exceptions.
 - Capture loose ends/questions
 - Decide if anything is urgent for morning
 
+### Low-bandwidth fallback ("light work")
+Use this when deep work bandwidth is low, but you still want momentum.
+- [ ] Clear WhatsApp messages / quick inbox cleanup
+- [ ] Send one warm intro request (example: Ines Rayo → Krishna)
+- [ ] Do one 5-minute follow-up ping from pipeline list
+- [ ] Update taskboard statuses (done/in progress/blocked)
+
 ### Wednesday side-project outreach block (afternoon)
 - [ ] Protect Wednesday afternoon from Recurrente work (unless true emergency)
 - [ ] Spend block on side projects (Tributax/PuenteSat) + outreach
@@ -185,6 +192,12 @@ Template per feature:
 - [ ] Go pee
 - [ ] Take creatine
 
+### Pre-call nervous system reset (before outreach/calls)
+- [ ] Take one slow deep breath (or 3 box breaths) before dialing
+- [ ] Exhale longer than inhale to lower speaking pace
+- [ ] Start first sentence 10% slower than normal
+- [ ] Intention check: sound clear/calm, not rushed/desperate
+
 ### Prospera study sprint (night block, 60–90 min)
 - [ ] Re-read existing deep research notes (20 min max, skim/highlight only)
 - [ ] Write 1-page business-model summary:
@@ -194,4 +207,5 @@ Template per feature:
   - Key constraints/regulatory dependencies
 - [ ] Write “what this means for me” (opportunities + risks)
 - [ ] Capture 3 follow-up questions for tomorrow
+
 
