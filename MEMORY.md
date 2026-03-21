@@ -1,6 +1,18 @@
 # MEMORY.md - Teiny's Long-Term Memory
 
-*Last updated: 2026-02-13*
+*Last updated: 2026-03-20*
+
+---
+
+## 🚨 DISTRIBUTION IS THE BOTTLENECK (2026-03-20)
+
+Code is getting insanely cheap. $1k/month could run 24/7 AI employees writing massive amounts of software.
+
+**The insight:** Building is no longer the constraint. Distribution is.
+
+We need to talk about this more often. The ability to ship will soon be near-infinite — the question is who sees it, who uses it, who pays for it.
+
+**Recurring prompt for planning sessions:** "We can build anything. What's our distribution strategy?"
 
 ---
 
